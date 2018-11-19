@@ -1,0 +1,11 @@
+# ceci est un test pour le nombre de commentaires
+
+# ceci est un commentaire
+
+=begin
+J'essaie d'écrire des commentaires sous Ruby alors que je travaille sur Python
+=end
+
+Ceci n'est pas un commentaire
+
+# il y a normalement 4 commentaires dans ce fichier
