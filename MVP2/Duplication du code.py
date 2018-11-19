@@ -1,0 +1,51 @@
+
+def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique à la machine
+    try:
+        RawData=open(Adresse,"r")
+        Transformed_data=[]
+
+        for line in RawData.readlines(): #Transformation du fichier brut txt en liste de lignes
+            Transformed_data=Transformed_data+[line]
+        return Transformed_data
+    except IOError as error:
+        print(error)
+
+print(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt"))
+
+def egalitelist (chaine1,chaine2):
+    n1=len(chaine1)
+    n2=len(chaine2)
+    if n1>n2:
+        for k in range(n1-n2):
+            chaine2=chaine2 + " "
+    else:
+        for k in range(n2-n1):
+            chaine1=chaine1 + " "
+    return ([str(chaine1),str(chaine2)])
+
+import numpy as np
+from matplotlib import pyplot as plt
+import matplotlib
+
+def Coeff_Dice(List): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
+    Result=np.zeros((len(List),len(List)))
+    img=np.zeros((len(List),len(List),3),dtype ='uint8')
+    for ligneref in List: #Ligne a comparer
+        for ligneanalysee in List: #Ligne comparée
+            A=egalitelist(ligneref,ligneanalysee)
+            compt=0
+            for i in range(len(A[0])):
+                if A[0][i]==A[1][i]:
+                    compt=compt+1
+
+
+            Result[List.index(ligneref)][List.index(ligneanalysee)]=compt/len(A[0])
+            img[List.index(ligneref)][List.index(ligneanalysee)]=[256-int(compt/len(A[0])*256),0,0]
+    plt.imshow(img)
+    plt.show ()
+    return(Result)
+
+print(Coeff_Dice(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt")))
+
+
+
