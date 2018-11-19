@@ -29,7 +29,7 @@ import matplotlib
 
 def Coeff_Dice(List): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
     Result=np.zeros((len(List),len(List)))
-    img=np.zeros((len(List),len(List),3),dtype ='uint8')
+    #img=np.zeros((len(List),len(List),3),dtype ='uint8')
     for ligneref in List: #Ligne a comparer
         for ligneanalysee in List: #Ligne comparée
             A=egalitelist(ligneref,ligneanalysee)
@@ -40,9 +40,9 @@ def Coeff_Dice(List): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
 
 
             Result[List.index(ligneref)][List.index(ligneanalysee)]=compt/len(A[0])
-            img[List.index(ligneref)][List.index(ligneanalysee)]=[256-int(compt/len(A[0])*256),0,0]
-    plt.imshow(img)
-    plt.show ()
+            #img[List.index(ligneref)][List.index(ligneanalysee)]=[256-int(compt/len(A[0])*256),0,0]
+    #plt.imshow(img)
+    #plt.show ()
     return(Result)
 
 print(Coeff_Dice(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt")))
