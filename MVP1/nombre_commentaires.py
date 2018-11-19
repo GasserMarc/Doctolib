@@ -9,8 +9,6 @@ def compte_commentaires(file_name):
 
         # Les commentaires en bout de ligne ne répondent pas à la convention précédente
         nb_lines = len(lines)
-        if lines[0][0]=='#':
-            nombre_commentaires += 1
         for i in range(nb_lines):
             # cette boucle repère les blocs de commentaires
             # seul le premier # du bloc permet d'ajouter un commentaire
@@ -28,6 +26,9 @@ def compte_commentaires(file_name):
                 nombre_commentaires += 1
     print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
 
+#print(compte_commentaires("fichier_test"))
+
+
 def remove_special(s):
     s1 = ''
     for i in range(len(s)):
@@ -39,4 +40,4 @@ def remove_special(s):
             return s1[:j]
     return s1
 
-print(remove_special('fvsdf?gsv(\\n'))
+#print(remove_special('fvsdf?gsv(\\n'))
