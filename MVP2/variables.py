@@ -2,8 +2,14 @@ def listes_de_variables(code_candidat):
     with open (code_candidat, "r" ) as code:
         lecture_code=code.read()
         words=lecture_code.split(" ")
-        for word in words:
-            if word == '=':
-                i= words.index('=') #donne l'indice du =
-                print (words [i-1]) #print le nom de la variable avant le =
+        for i in range (len(words)):
+            if words[i] == '=':
+                print (i)
+                if i==0:
+                    break
+                else:
+                    print (words [i-1]) #print le nom de la variable avant le =
     return
+
+print (listes_de_variables("EventCandidatA.rb"))
+
