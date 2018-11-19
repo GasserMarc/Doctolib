@@ -1,0 +1,32 @@
+Projet 1 - Analyse du code
+
+MVP 1 : Parser un fichier pr déterminer quelques informations :
+
+Définir des fonctions qui renvoient :
+-	Nombre de fonctions
+-	Nombre de commentaires (détecter les #)
+-	Nombre de tests
+-	(Nombre de variables – lisibilité)
+-	Nombre de boucles imbriquées
+-	Nombre de caractères par lignes (nombre de lignes avec plus de tant de caractères)
+-	Nombre de variables (+ occurrences)
+
+MVP 2 : Ajouter des métriques plus qualitatives : duplication de code, nom des variables, nom des fonctions ...
+
+-	Détecter la duplication du code :
+-	Nom des variables : imprimer tous les noms des variables, compter le nombre de lettres dans les variables,
+pas de majuscule pour les variables
+-	Nom des fonctions : détecter si le nom de la fonction revient dans le commentaire, voir si la fonction fait
+plus d’une/ deux lettre(s), ne s’appelle pas fonction, pas de majuscule
+
+MVP 3 : Détection de fraude (en comparant avec d’autres fichiers) : mêmes noms de méthodes, mêmes tests, etc...
+
+-	Pour chaque fonction du code du candidat, voir s’il existe une fonction du meme nom dans les fichiers de comparaison.
+Si oui, penser à d’autres analyses dans le corps de la fonction.
+-	Meme chose pour le nom des tests
+
+MVP 4 : Prédire le niveau du candidat
+
+-	Quels sont les critères pour évaluer le niveau ?
+-	Pourcentage de code copié
+-	Penser à la manière de le présenter
