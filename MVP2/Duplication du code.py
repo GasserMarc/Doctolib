@@ -28,21 +28,20 @@ from matplotlib import pyplot as plt
 import matplotlib
 
 def Coeff_Dice(List): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
-    Result=np.zeros((len(List),len(List)))
-    #img=np.zeros((len(List),len(List),3),dtype ='uint8')
+    Result=np.zeros((len(List),len(List)))#Création d'une matrice N*N pour enregistrer les résultats
+    img=np.zeros((len(List),len(List),3),dtype ='uint8')#Même matrice, mais avec des couleurs
     for ligneref in List: #Ligne a comparer
         for ligneanalysee in List: #Ligne comparée
-            A=egalitelist(ligneref,ligneanalysee)
+            A=egalitelist(ligneref,ligneanalysee)#Egalise la longueur des deux lignes
             compt=0
             for i in range(len(A[0])):
                 if A[0][i]==A[1][i]:
-                    compt=compt+1
+                    compt=compt+1 #Compte les caractères en commun entre les deux lignes
 
-
-            Result[List.index(ligneref)][List.index(ligneanalysee)]=compt/len(A[0])
-            #img[List.index(ligneref)][List.index(ligneanalysee)]=[256-int(compt/len(A[0])*256),0,0]
-    #plt.imshow(img)
-    #plt.show ()
+            Result[List.index(ligneref)][List.index(ligneanalysee)]=compt/len(A[0])#Affecte résultat à matrice
+            img[List.index(ligneref)][List.index(ligneanalysee)]=[256-int(compt/len(A[0])*256),0,0]#Idem
+    plt.imshow(img)
+    plt.show ()
     return(Result)
 
 print(Coeff_Dice(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt")))
