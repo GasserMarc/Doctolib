@@ -1,7 +1,7 @@
-Dans sa branche "git add ."
+Dans ta branche "git add ."
 Puis: "git commit -m «message »"
 Puis changement de branche : "git checkout master"
-Puispour recupere ce qui s'est passé sur github: "git pull" pour recuperer la mise à jour
+Puis pour recupérer ce qui s'est passé sur github: "git pull" pour récuperer la mise à jour
 Puis: "git checkout <tabranche>"
 Puis: "git merge master"
 Puis: "git push"
