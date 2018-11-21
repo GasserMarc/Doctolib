@@ -17,10 +17,8 @@ def listes_de_variables(code_candidat):
     '''
     with open (code_candidat, "r" ) as code:
         lecture_code=code.readlines()
-        print (lecture_code)
         variables= []
         for line in lecture_code:
-            print (line)
             words=line.split()
             if len (words)<2:
                 pass #si il y a moins de 2 mots il ne peut pas avoir de variable
@@ -28,6 +26,7 @@ def listes_de_variables(code_candidat):
                 variables.append(words[0]) #cree la liste de variables
     return (variables, len(variables))
 
+print(listes_de_variables("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 
 def controle_nom_variable (code_candidat):
     '''
@@ -60,14 +59,14 @@ def majuscule_variable(code_candidat):
     :param code_candidat:
     :return:
     '''
-     variables=listes_de_variables(code_candidat)
-     nb_variable_majuscule=0 #compte le nombre de variables commençant par une majuscule
-     for i in range (len(variables)):
-             code_ascii=ord((variables[i][0]))
-             if code_ascii>=65 or code_ascii<=90:
-                 nb_variable_majuscule=+1
-     pourcentage_debut_majuscule= ((nb_variable_majuscule *100)/len(variables))
-     return pourcentage_debut_majuscule
+    variables=listes_de_variables(code_candidat)
+    nb_variable_majuscule=0 #compte le nombre de variables commençant par une majuscule
+    for i in range (len(variables)):
+        code_ascii=ord((variables[i][0]))
+        if code_ascii>=65 or code_ascii<=90:
+            nb_variable_majuscule=+1
+    pourcentage_debut_majuscule= ((nb_variable_majuscule *100)/len(variables))
+    return pourcentage_debut_majuscule
 
 
 '''
@@ -135,12 +134,12 @@ def majuscule_fonction(code_candidat):
     :param code_candidat:
     :return:
     '''
-     fonctions=list_functions(code_candidat)
-     nb_fonctions_majuscule=0 #compte le nombre de variables commencant par une majuscule
-     for i in range (len(fonctions)):
-             code_ascii=ord((fonctions[i][0]))
-             if code_ascii>=65 or code_ascii<=90:
-                 nb_fonctions_majuscule=+1
-     pourcentage_debut_majuscule= ((nb_fonctions_majuscule *100)/len(fonctions))
-     return pourcentage_debut_majuscule
+    fonctions=list_functions(code_candidat)
+    nb_fonctions_majuscule=0 #compte le nombre de variables commencant par une majuscule
+    for i in range (len(fonctions)):
+        code_ascii=ord((fonctions[i][0]))
+        if code_ascii>=65 or code_ascii<=90:
+            nb_fonctions_majuscule=+1
+    pourcentage_debut_majuscule= ((nb_fonctions_majuscule *100)/len(fonctions))
+    return pourcentage_debut_majuscule
 
