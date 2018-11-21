@@ -24,13 +24,7 @@ def fonction_de_meme_nom(Code_candidat):
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
     return liste_bilan
 
-print(fonction_de_meme_nom("../Exemples_codes/EventCandidateB.rb"))
 
-
-# liste_fichier=os.listdir("C:\Marc\Coding_weeks\Doctolib\Exemples_codes")
-# print (liste_fichier)
-# for fichier in liste_fichier:
-#     print("C:\Marc\Coding_weeks\Doctolib\Exemples_codes\\" + fichier)
 
 
 
