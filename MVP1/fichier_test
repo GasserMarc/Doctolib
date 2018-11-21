@@ -1,11 +1,8 @@
-# ceci est un test pour le nombre de commentaires
+import difflib
 
-# ceci est un commentaire
+text1 = open("essai1.rb").readlines()
+text2 = open("essai2.rb").readlines()
 
-=begin
-J'essaie d'écrire des commentaires sous Ruby alors que je travaille sur Python
-=end
+for line in difflib.unified_diff(text1, text2):
+    print line
 
-Ceci n'est pas un commentaire
-
-# il y a normalement 4 commentaires dans ce fichier
