@@ -12,5 +12,5 @@ def listes_de_variables(code_candidat):
                     variables.append(words[i-1])
     return variables
 
-print (listes_de_variables("EventCandidatA.rb"))
+#print (listes_de_variables("EventCandidatA.rb"))
 

@@ -98,12 +98,7 @@ class EventCandidatA < ApplicationRecord
         slots << Time.at(timestamp).utc.strftime('%-H:%M')
       end
     end
-def appoint
-    if starts_at.present? and ends_at.present? and
-        EventCandidatA.openings_on(starts_at).cover(starts_at, ends_at).empty?
-      errors.add(:base, 'cannot be outside of opening hours')
-    end
-  end
+
     return slots
   end
 end
