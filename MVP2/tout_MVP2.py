@@ -49,9 +49,9 @@ def calcul_pourcentage_variables_mal_nommees(code_candidat):
     :param code_candidat:
     :return:
     '''
-    nb_variables_mal_nommées=controle_nom_variable(code_candidat)
+    nb_variables_mal_nommees=controle_nom_variable(code_candidat)
     variables=listes_de_variables(code_candidat)[0]
-    pourcentage_mal_nommees=((nb_variables_mal_nommées*100)/len(variables))
+    pourcentage_mal_nommees=((nb_variables_mal_nommees*100)/len(variables))
     return pourcentage_mal_nommees
 
 def majuscule_variable(code_candidat):
@@ -61,7 +61,7 @@ def majuscule_variable(code_candidat):
     :return:
     '''
      variables=listes_de_variables(code_candidat)
-     nb_variable_majuscule=0 #compte le nombre de variables commencant par une majuscule
+     nb_variable_majuscule=0 #compte le nombre de variables commençant par une majuscule
      for i in range (len(variables)):
              code_ascii=ord((variables[i][0]))
              if code_ascii>=65 or code_ascii<=90:
@@ -89,9 +89,14 @@ def remove_special(s):
 
 #print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
-def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
+def list_functions(code_candidat):
+    '''
+    renvoie une liste de toutes les fonctions du code du candidat
+    :param code_candidat:
+    :return:
+    '''
     list_of_functions = []
-    with open(Code_candidat, "r") as code:
+    with open(code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
         mots = code.split(' ') #liste de tous les mots du code
     for i in range(len(mots)):
@@ -119,9 +124,9 @@ def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     :param code_candidat:
     :return:
     '''
-    nb_fonctions_mal_nommées=controle_nom_fonction(code_candidat)
+    nb_fonctions_mal_nommees=controle_nom_fonction(code_candidat)
     fonctions=list_functions(code_candidat)[0]
-    pourcentage_mal_nommees=((nb_fonctions_mal_nommées*100)/len(fonctions))
+    pourcentage_mal_nommees=((nb_fonctions_mal_nommees*100)/len(fonctions))
     return pourcentage_mal_nommees
 
 def majuscule_fonction(code_candidat):
