@@ -15,9 +15,9 @@ candidat
 #print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
 
-def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
+def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
     list_of_functions = []
-    with open(Code_candidat, "r") as code:
+    with open(code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
         mots = code.split(' ') #liste de tous les mots du code
     for i in range(len(mots)):
@@ -70,11 +70,11 @@ Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candid
 '''
 
 
-def count_boucles(Code_Candidat):
+def count_boucles(code_candidat):
     #on compte le nombre de boucles dans le code du candidat, définie par "each"
-    with open (Code_Candidat,"r") as code :
-        Ouverture2code = open(Code_Candidat, "r")
-        textealire=Ouverture2code.readlines() #on ouvre le code du candidat et on lit toutes les lignes en renvoyant la liste de lignes
+    with open (code_candidat,"r") as code :
+        ouverture2code = open(code_candidat, "r")
+        textealire=ouverture2code.readlines() #on ouvre le code du candidat et on lit toutes les lignes en renvoyant la liste de lignes
         textealire=str(textealire) #on met sous forme d'une string pour faciliter la lecture
         nombredeboucle=textealire.count("each")#on compte le nombre de boucle avec "count""
         print("Le fichier contient" ,nombredeboucle, "fois une boucle")
@@ -116,3 +116,6 @@ def listes_de_variables(code_candidat):
     return (variables, len(variables))
 
 
+def run_script_MVP_1(code_candidat):
+    resultats = {}
+    resultats[functionCount]=list_functions(code_candidat)
