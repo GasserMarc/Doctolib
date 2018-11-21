@@ -26,6 +26,7 @@ def listes_de_variables(code_candidat):
                 variables.append(words[0]) #cree la liste de variables
     return (variables, len(variables))
 
+print(listes_de_variables("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 
 def controle_nom_variable (code_candidat):
     '''
@@ -64,6 +65,9 @@ def majuscule_variable(code_candidat):
             code_ascii=ord((variables[i][0]))
             if code_ascii>=65 or code_ascii<=90:
                 nb_variable_majuscule=+1
+        code_ascii=ord((variables[i][0]))
+        if code_ascii>=65 or code_ascii<=90:
+            nb_variable_majuscule=+1
     pourcentage_debut_majuscule= ((nb_variable_majuscule *100)/len(variables))
     return pourcentage_debut_majuscule
 
@@ -139,6 +143,9 @@ def majuscule_fonction(code_candidat):
             code_ascii=ord((fonctions[i][0]))
             if code_ascii>=65 or code_ascii<=90:
                 nb_fonctions_majuscule=+1
+        code_ascii=ord((fonctions[i][0]))
+        if code_ascii>=65 or code_ascii<=90:
+            nb_fonctions_majuscule=+1
     pourcentage_debut_majuscule= ((nb_fonctions_majuscule *100)/len(fonctions))
     return pourcentage_debut_majuscule
 
