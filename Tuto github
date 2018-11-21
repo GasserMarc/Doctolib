@@ -7,3 +7,10 @@ Puis: "git merge master"
 Puis: "git push"
 Retourner sur github, aller dans pull request
 Cliquer sur "New pull request" (bouton vert) et sélectionner sa branche pour la fusion.
+
+
+git log --graph donne les commites que l'on a réalisé
+en cas de conflit:
+head= ce qui a sur remote
+en dessous: ce qui est sur notre ordi
+pour résoudre souci: on supprime les balises, et soit on choisit une des deux versions (et on supprime l'autre), soit on fait un mix

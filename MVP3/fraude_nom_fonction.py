@@ -24,6 +24,7 @@ def fonction_de_meme_nom(Code_candidat):
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
     return liste_bilan
 
+print (fonction_de_meme_nom("C:\Users\Marie\PycharmProjects\Doctolib\Exemples_codes\EventCandidatA.rb"))
 
 
 

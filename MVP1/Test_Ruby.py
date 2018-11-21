@@ -86,4 +86,3 @@ print(compar2("EventCandidatA.rb","EventCandidatATest.rb","essaiannexe.txt"))
 
 
 
-
