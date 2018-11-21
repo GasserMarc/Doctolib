@@ -58,5 +58,3 @@ line = "il a dit : \'non\'"
 print(line)
 pos1 = line.find
 print(line.find('\''))'''
-
-
