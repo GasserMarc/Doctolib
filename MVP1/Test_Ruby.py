@@ -45,4 +45,3 @@ print(nombre2commentaires("EventCandidatA.rb"))
 
 
 
-

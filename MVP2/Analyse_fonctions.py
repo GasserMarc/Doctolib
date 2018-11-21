@@ -24,6 +24,9 @@ def list_functions(Code_candidat):
             list_of_functions.append(remove_specials(mots[i+1]))
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
+print (len(list_functions("EventCandidatA.rb")))
+
+
 '''def trier(list_of_functions): #autre possT
     Rlist_of_functions = []
     for function in list_of_functions:
