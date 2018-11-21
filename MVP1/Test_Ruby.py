@@ -9,7 +9,7 @@ def count_fonction(Code_Candidat):
        compteur=0
        for k in range (n):#pour tous les k compris dans la liste des mots à lister
             if listemots[k]== "def":
-                compteur+= 1#on rajoute +1 à chaque fois que l'on comte une fonction
+                compteur+= 1#on rajoute +1 à chaque fois que l'on compte une fonction
 
     print("Le fichier contient " ,compteur, "fonction(s)")
     return (compteur)
