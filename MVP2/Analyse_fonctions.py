@@ -5,7 +5,8 @@ ne s’appelle pas fonction, pas de majuscule '''
 
 
 
-def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
+def list_functions(Code_candidat):
+    #renvoie une liste de toutes les fonctions du code du candidat.
     list_of_functions = []
     with open(Code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
@@ -16,6 +17,7 @@ def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du
         elif mots[i] == "def":
             list_of_functions.append(mots[i+1])
     return list_of_functions, len(list_of_functions) #renvoie la liste des fonctions et le nombre de fonctions
+
 
 '''def trier(list_of_functions): #ne fonctionne pas
     Rlist_of_functions = []
