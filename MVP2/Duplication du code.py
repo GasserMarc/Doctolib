@@ -12,6 +12,7 @@ def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique
     except IOError as error:
         print(error)
 
+
 def egalitelist (chaine1,chaine2):
     n1=len(chaine1)
     n2=len(chaine2)
