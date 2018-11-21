@@ -15,31 +15,35 @@ def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du
             pass
         elif mots[i] == "def":
             list_of_functions.append(mots[i+1])
-    return list_of_functions, len(list_of_functions) #renvoie la liste des fonctions et le nombre de fonctions
+    return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
-'''def trier(list_of_functions): #ne fonctionne pas
+
+
+def trier(list_of_functions): #ne fonctionne pas
     Rlist_of_functions = []
     for function in list_of_functions:
         Rfunction = ''
         for i in list(function):
-            if i not in ["?", "("]:
+            if i not in ["\n","("]:
                 Rfunction += i
             else:
                 break
+        # autre fonction possible : Rfunction = Rfunction.replace("\n",'')
         Rlist_of_functions += [Rfunction]
     return Rlist_of_functions
-
-print(trier(list_functions('EventCandidatA.rb')))''' #ne fonctionne pas pour trier les caractères speciaux
 
 def remove_special(s):
     s1 = ''
     for i in range(len(s)):
-        if s[i] == '?' or s[i] == '(':
+        if s[i] in ('\n', '('):
             s1 = s[:i]
             break
-    for j in range(len(s1)):
-        if s1[j:j+2]=='\\n':
-            return s1[:j]
     return s1
+
+print(remove_special(list_functions('EventCandidatA.rb'))) #ne fonctionne pas pour trier les caractères speciaux"
+'''print(list("nomfonction"))'''
+
+
+
 
 
