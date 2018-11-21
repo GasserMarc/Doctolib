@@ -8,9 +8,8 @@ def listes_de_variables(code_candidat):
                 if i==0:
                     break
                 else:
-                    print (words [i-1]) #print le nom de la variable avant le =
-                    variables.append(words[i-1])
-    return variables
+                    variables.append(words[i-1]) #cree la liste de variables
+    return (variables)
 
 def nombre_de_variable (code_candidat):
     variable=listes_de_variables(code_candidat)

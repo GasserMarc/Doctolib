@@ -1,4 +1,4 @@
-import copy
+
 
 def caractere_ligne (code_candidat):
     """"Cette fonction permet de dénombrer le nombre de caractère par ligne"""
@@ -10,6 +10,6 @@ def caractere_ligne (code_candidat):
                 if len(liste_ligne[k])>= 79:
                     compteur += 1
         print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
-        return
+    return
 
-print(caractere_ligne ("EventCandidatATest.rb"))
+

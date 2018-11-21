@@ -10,7 +10,7 @@ def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique
     except IOError as error:
         print(error)
 
-print(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt"))
+#print(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt"))
 
 def egalitelist (chaine1,chaine2):
     n1=len(chaine1)
@@ -44,7 +44,5 @@ def Coeff_Dice(List): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
     plt.show ()
     return(Result)
 
-print(Coeff_Dice(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt")))
-
-
-
+#print(Coeff_Dice(Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/RawData/test.txt")))
+print(Coeff_Dice("Duplication du code.py"))
