@@ -27,17 +27,3 @@ def compte_commentaires(file_name):
     print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
 
 #print(compte_commentaires("fichier_test"))
-
-
-def remove_special(s):
-    s1 = ''
-    for i in range(len(s)):
-        if s[i] == '?' or s[i] == '(':
-            s1 = s[:i]
-            break
-    for j in range(len(s1)):
-        if s1[j:j+2]=='\\n':
-            return s1[:j]
-    return s1
-
-#print(remove_special('fvsdf?gsv(\\n'))
