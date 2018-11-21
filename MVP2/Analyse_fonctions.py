@@ -13,7 +13,8 @@ def remove_specials(s):
 
 #print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
-def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
+def list_functions(Code_candidat):
+    #renvoie une liste de toutes les fonctions du code du candidat.
     list_of_functions = []
     with open(Code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
@@ -57,5 +58,3 @@ line = "il a dit : \'non\'"
 print(line)
 pos1 = line.find
 print(line.find('\''))'''
-
-
