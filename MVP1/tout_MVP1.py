@@ -1,10 +1,10 @@
 '''
-Ce bloc de fonctions permet de renvoyer une liste avec tous les noms de fonctions utilisés dans le code par le
+Ce bloc de fonctions permet de renvoyer une liste avec tous les noms de fonctions utilisées dans le code par le
 candidat
 '''
 
 # Cette fonction retire les ( et \n et tous les caractères suivants dans une chaine de caractères
- def remove_special(s):
+def remove_special(s):
     s1 = s
     for i in range(len(s1)):
         if s1[i] == '(' or s1[i] == '\n':
@@ -15,15 +15,15 @@ candidat
 #print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
 
-def list_functions(Code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
+def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
     list_of_functions = []
-    with open(Code_candidat, "r") as code:
+    with open(code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
         mots = code.split(' ') #liste de tous les mots du code
     for i in range(len(mots)):
         if mots[i] == "def":
             list_of_functions.append(remove_special(mots[i+1]))
-    return list_of_functions, len(list_of_functions) #renvoie la liste des fonctions et le nombre de fonctions
+    return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
 
 '''
@@ -55,14 +55,30 @@ def compte_commentaires(file_name):
             # Les commentaires entre = se terminent uniquement par un =end seul sur une ligne
             if lines[i][0:4] == '=end':
                 nombre_commentaires += 1
-    print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
+    #print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
+    return nombre_commentaires
 
 #print(compte_commentaires("fichier_test"))
 
 
 '''
-Cette fonction renvoie le nombre de tests
+Cette fonction renvoie la liste des tests effectués
 '''
+def list_tests(tests_candidat):
+    with open (tests_candidat, "r" ) as tests:
+        lecture_tests = tests.readlines()
+        list_of_tests = []
+        for line in lecture_tests:
+            words = line.split()
+            if len(line) < 2: #il y a nécessairement plus de 1 mot sur une ligne définissant un test.
+                pass
+            elif words[0] == 'test':
+                pos1 = line.find('"')
+                borne = pos1+1 # on démarre la nouvelle recherche à partir de l'élément suivant '"'
+                newline = line[borne:]
+                pos2 = newline[pos1:].find('"')
+                list_of_tests.append(line[borne:pos2])
+    return list_of_tests
 
 
 '''
@@ -70,14 +86,13 @@ Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candid
 '''
 
 
-def count_boucles(Code_Candidat):
-    #on compte le nombre de boucles dans le code du candidat, définie par "each"
-    with open (Code_Candidat,"r") as code :
-        Ouverture2code = open(Code_Candidat, "r")
-        textealire=Ouverture2code.readlines() #on ouvre le code du candidat et on lit toutes les lignes en renvoyant la liste de lignes
+def count_boucles(code_candidat):
+    #on compte le nombre de boucles dans le code du candidat, définies par "each"
+    with open (code_candidat,"r") as code :
+        textealire=code.readlines() #on ouvre le code du candidat et on lit toutes les lignes en renvoyant la liste de lignes
         textealire=str(textealire) #on met sous forme d'une string pour faciliter la lecture
-        nombredeboucle=textealire.count("each")#on compte le nombre de boucle avec "count""
-        print("Le fichier contient" ,nombredeboucle, "fois une boucle")
+        nombredeboucle=textealire.count(".each")#on compte le nombre de boucle avec "count""
+        #print("Le fichier contient" ,nombredeboucle, "boucle(s)")
         return(nombredeboucle)
 
 
@@ -94,16 +109,16 @@ def caractere_ligne (code_candidat):
         for k in range(longueur):
                 if len(liste_ligne[k])>= 79:
                     compteur += 1
-        print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
-    return
+        #print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
+    return compteur
 
 
 '''
-Cette fonction renvoie le nom des variables utilisées par le candidat et leur nombre
+Cette fonction renvoie le nom des variables utilisées par le candidat
 '''
 
 def listes_de_variables(code_candidat):
-    with open (code_candidat, "r" ) as code:
+    with open(code_candidat, "r" ) as code:
         lecture_code=code.read()
         words=lecture_code.split(" ")
         variables= []
@@ -113,6 +128,25 @@ def listes_de_variables(code_candidat):
                     break
                 else:
                     variables.append(words[i-1]) #cree la liste de variables
-    return (variables, len(variables))
+    return variables
 
 
+
+def run_script_MVP_1(code_candidat):
+    '''
+    Cette fonction prend le code du candidat et renvoie un dictionnaire qui renvoie toutes les caractéristiques
+    évaluées par les autres fonctions du programme
+    :param code_candidat:
+    :return:
+    '''
+    resultats = {}
+    resultats['functionCount']=len(list_functions(code_candidat))
+    resultats['commentCount']=compte_commentaires(code_candidat)
+    resultats['testCount']=len(list_tests(code_candidat))
+    resultats['loopCount']=count_boucles(code_candidat)
+    resultats['tooLongLines']=caractere_ligne(code_candidat)
+    resultats['variableCount']=len(listes_de_variables(code_candidat))
+    print(resultats)
+    return resultats
+
+run_script_MVP_1("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb")

@@ -91,7 +91,7 @@ def Coeff_Dice_max(List,Precision): #https://fr.wikipedia.org/wiki/Indice_de_Sø
     return(Result)
 
 
-A=Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/MVP2/EventCandidatA.rb")
+A=Transformation_fichier("/Users/PaulJoly/PycharmProjects/Projet_Doctolib/MVP2/EventCandidatATest.rb")
 print(Coeff_Dice(A,0.1))
 B=suppr_space(A)
 print(Coeff_Dice(B,0.1))
