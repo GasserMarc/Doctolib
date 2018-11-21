@@ -33,10 +33,5 @@ def List_fonctions(Code_candidat): #renvoie une liste de toutes les fonctions du
     for i in range(len(lines)):
         mots = lines[i].split() #mots = liste de tous les mots de la line[i]
         print(mots)
-    for fonctions in range(len(lines)):
-        print(fonctions.text)
-
-
-
 
 print(List_fonctions("EventCandidatA.rb"))
