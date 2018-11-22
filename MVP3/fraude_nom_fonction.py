@@ -53,4 +53,4 @@ def comparaison_code(code_candidat):
                         break
     return(lignes_identiques/len(liste_ligne)) #si renvoie
 
-print(comparaison_code("C:\Marc\Coding_weeks\Doctolib\Exemples_codes\EventCandidatA.rb"))
+print(comparaison_code("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
