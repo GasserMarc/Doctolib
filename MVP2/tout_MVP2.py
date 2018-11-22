@@ -66,12 +66,6 @@ def majuscule_variable(code_candidat):
         code_ascii=ord((variables[i][0]))
         if code_ascii>=65 or code_ascii<=90:
             nb_variable_majuscule+=1
-        code_ascii=ord(variables[i][0])
-        if code_ascii>=65 or code_ascii<=90:
-            nb_variable_majuscule=+1
-            code_ascii=ord((variables[i][0]))
-            if code_ascii>=65 or code_ascii<=90:
-                nb_variable_majuscule=+1
     pourcentage_debut_majuscule= ((nb_variable_majuscule *100)/len(variables))
     return pourcentage_debut_majuscule
 

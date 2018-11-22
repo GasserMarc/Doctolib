@@ -24,6 +24,11 @@ def analyse_code_candidat (code_candidat):
     analyse["Duplication_sur_texte_nettoye"]=coeff_dice(clean,0.3)
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
+    analyse["%detextesuspect"]=comparaison_code(code_candidat)
+    resultats=pd.DataFrame.from_dict(analyse, orient='index')
+    return(resultats)
+
+
 
 
 def note_code_candidat(code_candidat):
@@ -73,6 +78,7 @@ def note_code_candidat(code_candidat):
         notes_candidat["pourcentage_variables_mal_nommees"] = 2
     else:
         notes_candidat["pourcentage_variables_mal_nommees"] = 1
+
 
 
 
