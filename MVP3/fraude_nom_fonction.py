@@ -2,13 +2,13 @@ from MVP2.Analyse_fonctions import *
 import os
 
 
-def fonction_de_meme_nom(Code_candidat):
+def fonction_de_meme_nom(code_candidat):
     '''cette fonction regarde pour chaque fonction du code écrit
     par le candidat s'il correspond une fonction de même nom
     dans les fichiers de comparaison'''
 
     #on va récuperer la liste de fonctions du candidat
-    list_functions_candidat = list_functions(Code_candidat)
+    list_functions_candidat = list_functions(code_candidat)
     #on va créer une liste qui va contenir les informations (nom de la fonction et son nombre d'itérations)
     liste_bilan=[]
     #on va créer une liste contenant le nom des codes contenues dans la base de donnée
@@ -23,6 +23,7 @@ def fonction_de_meme_nom(Code_candidat):
                 compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
     return liste_bilan
+
 
 print (fonction_de_meme_nom("C:\Users\Marie\PycharmProjects\Doctolib\Exemples_codes\EventCandidatA.rb"))
 
@@ -61,11 +62,5 @@ def compar2(Code1,Code2,Code3):
                         code3.write("Les lignes identiques sont : %s " %line) #uniquement si il y a des similarités les renvoie dans ce cas
 
 print(compar2("EventCandidatA.rb","EventCandidatATest.rb","essaiannexe.txt"))
-
-
-
-
-
-
 
 

@@ -26,7 +26,6 @@ def listes_de_variables(code_candidat):
                 variables.append(words[0]) #cree la liste de variables
     return (variables, len(variables))
 
-print(listes_de_variables("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 
 def controle_nom_variable (code_candidat):
     '''
@@ -64,6 +63,9 @@ def majuscule_variable(code_candidat):
     for i in range (len(variables)):
         code_ascii=ord((variables[i][0]))
         if code_ascii>=65 or code_ascii<=90:
+            nb_variable_majuscule+=1
+        code_ascii=ord(variables[i][0])
+        if code_ascii>=65 or code_ascii<=90:
             nb_variable_majuscule=+1
             code_ascii=ord((variables[i][0]))
             if code_ascii>=65 or code_ascii<=90:
@@ -89,7 +91,6 @@ def remove_special(s):
             break
     return s1
 
-#print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
 def list_functions(code_candidat):
     '''
@@ -149,7 +150,7 @@ def majuscule_fonction(code_candidat):
     pourcentage_debut_majuscule= ((nb_fonctions_majuscule *100)/len(fonctions))
     return pourcentage_debut_majuscule
 
-def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique à la machine
+def transformation_fichier(adresse): #Adresse est le chemin d'accès spécifique à la machine
     """
     Transforme le fichier brut en liste de lignes
     :param Adresse:
@@ -157,35 +158,35 @@ def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique
     """
 
     try:
-        RawData=open(Adresse,"r")
-        Transformed_data=[]
+        RawData=open(adresse,"r")
+        transformed_data=[]
         for line in RawData.readlines(): #Transformation du fichier brut txt en liste de lignes
-            Transformed_data=Transformed_data+[line]
-        return Transformed_data
+            transformed_data+=[line]
+        return transformed_data
     except IOError as error:
         print(error)
 
 
-def suppr_space(List):
+def suppr_space(list):
     """
     Supprime les espaces du document
     :param List:
     :return:
     """
     new_list=[]
-    for line in List:
+    for line in list:
         new=line.replace(" ","")
         new_list=new_list+[new]
     return (new_list)
 
-def suppr_blank_and_end(List):
+def suppr_blank_and_end(list):
     """
     Supprime les end et les lignes vierges
-    :param List:
+    :param list:
     :return:
     """
     new_list=[]
-    for line in List:
+    for line in list:
         if "end" not in line:
             if line!='\n':
                 new_list=new_list+[line]
@@ -212,82 +213,78 @@ import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib
 
-def Coeff_Dice(List,Precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
-    Result=np.zeros((len(List),len(List)))#Création d'une matrice N*N pour enregistrer les résultats
-    #img=np.zeros((len(List),len(List),3),dtype ='uint8')#Même matrice, mais avec des couleurs
-    Total=0
-    for ligneref in range(len(List)): #Ligne a comparer
-        for ligneanalysee in range(len(List)): #Ligne comparée
-            A=egalitelist(List[ligneref],List[ligneanalysee])#Egalise la longueur des deux lignes
+def coeff_dice(list,precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
+    result=np.zeros((len(list),len(list)))#Création d'une matrice N*N pour enregistrer les résultats
+    #img=np.zeros((len(list),len(list),3),dtype ='uint8')#Même matrice, mais avec des couleurs
+    total=0
+    for ligneref in range(len(list)): #Ligne a comparer
+        for ligneanalysee in range(len(list)): #Ligne comparée
+            egaliseur=egalitelist(list[ligneref],list[ligneanalysee])#Egalise la longueur des deux lignes
             compt=0
-            for i in range(len(A[0])):
-                if A[0][i]==A[1][i]:
+            for i in range(len(egaliseur[0])):
+                if egaliseur[0][i]==egaliseur[1][i]:
                     compt=compt+1 #Compte les caractères en commun entre les deux lignes
-            if compt/len(A[0])< Precision:
+            if compt/len(egaliseur[0])< precision:
                 res=float(0)
             else:
-                res=float(compt/len(A[0]))
-            if res>0.5+Precision:
-                Total=Total+1
-            Result[ligneref][ligneanalysee]=res#Affecte résultat à matrice
+                res=float(compt/len(egaliseur[0]))
+            if res>0.5+precision:
+                total+=1
+            result[ligneref][ligneanalysee]=res#Affecte résultat à matrice
             #img[ligneref][ligneanalysee]=[255,255-int(res*255),255-int(res*255)]#Idem
     #plt.imshow(img)
     #print(Result)
-    return(float(Total-len(List))/float(len(List)*(len(List)-1)/2))
+    return(float(total-len(list))/float(len(list)*(len(list)-1)/2))
 
 
 def mix(chaine):
     return chaine
 
-def Coeff_Dice_max(List,Precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
-    Result=np.zeros((len(List),len(List)))#Création d'une matrice N*N pour enregistrer les résultats
-    #img=np.zeros((len(List),len(List),3),dtype ='uint8')#Même matrice, mais avec des couleurs
-    Total=0
-    Test=0
-    for ligneref in range(len(List)): #Ligne a comparer
-        for ligneanalysee in range(len(List)): #Ligne comparée
+def coeff_dice_max(list,precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
+    result=np.zeros((len(list),len(list)))#Création d'une matrice N*N pour enregistrer les résultats
+    #img=np.zeros((len(list),len(list),3),dtype ='uint8')#Même matrice, mais avec des couleurs
+    total=0
+    test=0
+    for ligneref in range(len(list)): #Ligne a comparer
+        for ligneanalysee in range(len(list)): #Ligne comparée
             max=0
-            for i in range(len(List[ligneref])):
-                List[ligneref]=List[ligneref][i:]+List[ligneref][:i]
-                A=egalitelist(List[ligneref],List[ligneanalysee])#Egalise la longueur des deux lignes
+            for i in range(len(list[ligneref])):
+                list[ligneref]=list[ligneref][i:]+list[ligneref][:i]
+                egaliseur=egalitelist(list[ligneref],list[ligneanalysee])#Egalise la longueur des deux lignes
                 compt=0
-                for i in range(len(A[0])):
-                    if A[0][i]==A[1][i]:
-                        compt=compt+1 #Compte les caractères en commun entre les deux lignes
-                if compt/len(A[0])< Precision:
+                for i in range(len(egaliseur[0])):
+                    if egaliseur[0][i]==egaliseur[1][i]:
+                        compt+=1 #Compte les caractères en commun entre les deux lignes
+                if compt/len(egaliseur[0])< precision:
                     res=float(0)
                 else:
-                    res=float(compt/len(A[0]))
+                    res=float(compt/len(egaliseur[0]))
                 if res>max:
                     max=res
 
-            Result[ligneref][ligneanalysee]=max#Affecte résultat à matrice
+            result[ligneref][ligneanalysee]=max#Affecte résultat à matrice
 
-            if max>0.5+Precision:
+            if max>0.5+precision:
                 #img[ligneref][ligneanalysee]=[0,0,0]#Idem
-                Total=Total+1
+                total+=1
             #else:
                 #img[ligneref][ligneanalysee]=[255,255-int(max*255),255-int(max*255)]#Idem
     #plt.imshow(img)
-    return(float(Total-len(List))/float(len(List)*(len(List)-1)/2))
+    return(float(total-len(list))/float(len(list)*(len(list)-1)/2))
 
 
-def run_script_MVP2 (Adresse):
+def run_script_MVP2(adresse):
     MVP2={}
-    MVP2["liste_de_variables"]=listes_de_variables(Adresse)
-    MVP2["pourcentage_variables_mal_nommées"]=calcul_pourcentage_variables_mal_nommees(Adresse)
-    #MVP2["pourcentage_variables_majuscules"]=majuscule_variable(Adresse)
-    MVP2["liste_des_fonctions"]=list_functions(Adresse)
-    MVP2["pourcentage_fonctions_mal_nommées"]=calcul_pourcentage_fonctions_mal_nommees(Adresse)
-    #MVP2["pourcentage_functions_majuscules"]=majuscule_fonction(Adresse)
-    transformed=Transformation_fichier(Adresse)
-    A=Coeff_Dice(transformed,0.1)
+    MVP2["liste_de_variables"]=listes_de_variables(adresse)
+    MVP2["pourcentage_variables_mal_nommées"]=calcul_pourcentage_variables_mal_nommees(adresse)
+    #MVP2["pourcentage_variables_majuscules"]=majuscule_variable(adresse)
+    MVP2["liste_des_fonctions"]=list_functions(adresse)
+    MVP2["pourcentage_fonctions_mal_nommées"]=calcul_pourcentage_fonctions_mal_nommees(adresse)
+    #MVP2["pourcentage_functions_majuscules"]=majuscule_fonction(adresse)
+    transformed=transformation_fichier(adresse)
     clean=suppr_blank_and_end(suppr_space(transformed))
-    C=Coeff_Dice_max(clean,0.3)
-    MVP2["Duplication_ntrie"]=A
-    MVP2["Duplication_trie"]=C
+    MVP2["Duplication_nontrie"]=coeff_dice(transformed,0.1)
+    MVP2["Duplication_trie"]=coeff_dice(clean,0.3)
 
     return(MVP2)
 
-A=(run_script_MVP2(C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb))
-print(A)
