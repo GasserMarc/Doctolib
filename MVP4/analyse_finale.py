@@ -25,6 +25,10 @@ def analyse_code_candidat (code_candidat):
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
 
+<<<<<<< HEAD
+print(analyse_code_candidat("C:/Users/Victoire/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
+=======
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb"))
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateC.rb"))
+>>>>>>> master
