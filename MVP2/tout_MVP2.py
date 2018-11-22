@@ -41,6 +41,8 @@ def controle_nom_variable (code_candidat):
             #print (nb_variable_mal_nommees)
     return nb_variable_mal_nommees
 
+#print(controle_nom_variable("EventCandidatA.rb"))
+
 def calcul_pourcentage_variables_mal_nommees(code_candidat):
     '''
     Pourcentage de variables mal nommées dans le code
@@ -78,7 +80,7 @@ def majuscule_variable(code_candidat):
 Idem nom de fonctions
 '''
 
-def remove_special(s):
+def remove_specials(s):
     '''
     Retire les ( et \n d'une chaîne de caractères ainsi que tous les caractères qui suivent
     :param s:
@@ -92,20 +94,20 @@ def remove_special(s):
     return s1
 
 
-def list_functions(code_candidat):
+def list_functions(Code_candidat):
     '''
     renvoie une liste de toutes les fonctions du code du candidat
     :param code_candidat:
     :return:
     '''
     list_of_functions = []
-    with open(code_candidat, "r") as code:
+    with open(Code_candidat, "r") as code:
         code = code.read() #code = chaine de caractères
         mots = code.split(' ') #liste de tous les mots du code
     for i in range(len(mots)):
         if mots[i] == "def":
-            list_of_functions.append(remove_special(mots[i+1]))
-    return list_of_functions, len(list_of_functions) #renvoie la liste des fonctions et le nombre de fonctions
+            list_of_functions.append(remove_specials(mots[i+1]))
+    return list_of_functions #renvoie la liste des fonctions
 
 def controle_nom_fonction(code_candidat):
     '''
@@ -113,13 +115,15 @@ def controle_nom_fonction(code_candidat):
     :param code_candidat:
     :return nb de variables mal nommées:
     '''
-    fonctions=list_functions(code_candidat)[0]
+    fonctions=list_functions(code_candidat)
     nb_fonctions_mal_nommees=0 #compteur du nombre de variables mal nommées, avec des noms non explicites
     for nom_fonctions in fonctions:
-        if len(nom_fonctions)<=1: #si les variables ont un nom non explicite, avec une lettre
+        if len(nom_fonctions)<=1:#si les variables ont un nom non explicite, avec une lettre
+            '''print(nom_fonctions)'''
             nb_fonctions_mal_nommees+=1
-            #print (nb_variable_mal_nommees)
     return nb_fonctions_mal_nommees
+
+print(controle_nom_fonction("EventCandidatA.rb"))
 
 def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     '''
@@ -128,7 +132,7 @@ def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     :return:
     '''
     nb_fonctions_mal_nommees=controle_nom_fonction(code_candidat)
-    fonctions=list_functions(code_candidat)[0]
+    fonctions=list_functions(code_candidat)
     pourcentage_mal_nommees=((nb_fonctions_mal_nommees*100)/len(fonctions))
     return pourcentage_mal_nommees
 
@@ -142,13 +146,11 @@ def majuscule_fonction(code_candidat):
     nb_fonctions_majuscule=0 #compte le nombre de variables commencant par une majuscule
     for i in range (len(fonctions)):
             code_ascii=ord((fonctions[i][0]))
-            if code_ascii>=65 or code_ascii<=90:
-                nb_fonctions_majuscule=+1
-                code_ascii=ord((fonctions[i][0]))
-            if code_ascii>=65 or code_ascii<=90:
+            if code_ascii>=65 and code_ascii<=90:
                 nb_fonctions_majuscule=+1
     pourcentage_debut_majuscule= ((nb_fonctions_majuscule *100)/len(fonctions))
     return pourcentage_debut_majuscule
+
 
 def transformation_fichier(adresse): #Adresse est le chemin d'accès spécifique à la machine
     """
@@ -237,8 +239,6 @@ def coeff_dice(list,precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørens
     return(float(total-len(list))/float(len(list)*(len(list)-1)/2))
 
 
-def mix(chaine):
-    return chaine
 
 def coeff_dice_max(list,precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørensen-Dice
     result=np.zeros((len(list),len(list)))#Création d'une matrice N*N pour enregistrer les résultats
@@ -287,3 +287,4 @@ def run_script_MVP2(adresse):
     MVP2["Duplication_trie"]=coeff_dice(clean,0.3)
 
     return(MVP2)
+

@@ -25,4 +25,4 @@ def analyse_code_candidat (code_candidat):
     analyse["Duplication__sur_texte_nettoyé"]=coeff_dice(clean,0.3)
     return(analyse)
 
-print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
+print(analyse_code_candidat("C:/Users/Victoire/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))

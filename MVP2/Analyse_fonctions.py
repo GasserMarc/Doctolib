@@ -22,7 +22,7 @@ def list_functions(Code_candidat):
     for i in range(len(mots)):
         if mots[i] == "def":
             list_of_functions.append(remove_specials(mots[i+1]))
-    return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
+    return list_of_functions #renvoie la liste des fonctions
 
 
 '''def trier(list_of_functions): #autre possT
