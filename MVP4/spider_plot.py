@@ -62,3 +62,4 @@ ax.fill(angles, values, 'g', alpha=0.1)
 # Add legend
 plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
 
+plt.show()

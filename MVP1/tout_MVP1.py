@@ -25,7 +25,7 @@ def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du
             list_of_functions.append(remove_special(mots[i+1]))
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
-print(list_functions("EventCandidatA.rb"))
+#print(list_functions("EventCandidatA.rb"))
 
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
