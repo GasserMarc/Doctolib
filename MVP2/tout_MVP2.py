@@ -24,7 +24,7 @@ def listes_de_variables(code_candidat):
                 pass #si il y a moins de 2 mots il ne peut pas avoir de variable
             elif words[1] == '=':
                 variables.append(words[0]) #cree la liste de variables
-    return (variables, len(variables))
+    return (variables)
 
 
 def controle_nom_variable (code_candidat):
