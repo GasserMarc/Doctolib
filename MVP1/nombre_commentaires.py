@@ -26,3 +26,29 @@ def compte_commentaires(file_name):
                 nombre_commentaires += 1
     #print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
     return nombre_commentaires
+
+
+
+def compte_lignes_non_code(code_candidat):
+    """
+    Cette fonction renvoie le nombre de lignes qui ne contiennent pas de code à proprement parler
+    :param code_candidat:
+    :return:
+    """
+    nombre_lignes_non_code = 0
+    with open(code_candidat,'r') as code:
+        lines = code.readlines()
+        print(lines)
+        for line in lines:
+            if line == '\n':
+                nombre_lignes_non_code += 1
+            words = line.split()
+            try:
+                if words[0]=="#":
+                    nombre_lignes_non_code += 1
+            except IndexError:
+                pass
+        return nombre_lignes_non_code
+
+print(compte_lignes_non_code("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
+

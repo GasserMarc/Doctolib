@@ -25,6 +25,7 @@ def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du
             list_of_functions.append(remove_special(mots[i+1]))
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
+
 def taille_moyenne_fonctions(code_candidat):
     with open (code_candidat, "r") as code:
         lines=code.readlines()
@@ -32,8 +33,6 @@ def taille_moyenne_fonctions(code_candidat):
         nb_de_fonctions=len(list_functions(code_candidat))
         taille_moyenne_fonction=(taille_fichier)/nb_de_fonctions
         return (taille_moyenne_fonction)
-
-
 
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
@@ -86,7 +85,21 @@ def list_tests(tests_candidat):
                 pos2 = newline[pos1:].find('"')
                 list_of_tests.append(line[borne:pos2])
     return list_of_tests
-
+'''
+Cette fonction renvoie la moyenne des vérifications effectuées dans chaque test
+'''
+def asserts_par_test(tests_candidat):
+    with open(tests_candidat,"r") as tests:
+        lignes = tests.readlines()
+        compteur_asserts = 0
+        for ligne in lignes:
+            words = ligne.split()
+            try:
+                if words[0][:6]=='assert':
+                    compteur_asserts+=1
+            except IndexError:
+                pass
+        return compteur_asserts/len(list_tests(tests_candidat))
 
 '''
 Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candidat
@@ -145,28 +158,6 @@ def listes_de_variables(code_candidat):
                 variables.append(words[0]) #cree la liste de variables
     return (variables)
 
-
-
-def run_script_MVP_1(code_candidat):
-    '''
-    Cette fonction prend le code du candidat et renvoie un dictionnaire qui renvoie toutes les caractéristiques
-    évaluées par les autres fonctions du programme
-    :param code_candidat:
-    :return:
-    '''
-    resultats = {}
-    if len(list_functions(code_candidat)) != 0:
-        resultats['functionCount']=len(list_functions(code_candidat))
-    if len(list_tests(code_candidat)) != 0:
-        resultats['testCount']=len(list_tests(code_candidat))
-    resultats['commentCount']=compte_commentaires(code_candidat)
-    resultats['loopCount']=count_boucles(code_candidat)
-    resultats['tooLongLines']=caractere_ligne(code_candidat)
-    resultats['variableCount']=len(listes_de_variables(code_candidat))
-    print(resultats)
-    return resultats
-
-
 def ratio_spaces(code_candidat):
     with open(code_candidat,'r') as code:
         text = code.read()
@@ -190,6 +181,61 @@ def ratio_commentaires(Code_candidat): #calcule le rapport commentaire/texte
                 longueur_commentaires += l_commentaire
     return (longueur_commentaires/ longueur_code)*100 #renvoie un pourcentage
 
+
+def compte_lignes_non_code(code_candidat):
+    """
+    Cette fonction renvoie le nombre de lignes qui ne contiennent pas de code à proprement parler
+    :param code_candidat:
+    :return:
+    """
+    nombre_lignes_non_code = 0
+    with open(code_candidat,'r') as code:
+        lines = code.readlines()
+        print(lines)
+        for line in lines:
+            if line == '\n':
+                nombre_lignes_non_code += 1
+            words = line.split()
+            try:
+                if words[0]=="#":
+                    nombre_lignes_non_code += 1
+            except IndexError:
+                pass
+        return nombre_lignes_non_code
+
+
+def lignes_par_fonction(code_candidat):
+    """
+    Cette fonction renvoie le nombre de lignes moyennes utilisées pour écrire une fonction
+    :param code_candidat:
+    :return:
+    """
+    nb_fonctions = len(list_functions(code_candidat))
+    with open(code_candidat, 'r') as code:
+        lignes = code.readlines()
+        nb_lignes_codees=len(lignes)-compte_lignes_non_code(code_candidat)
+        return nb_lignes_codees/nb_fonctions
+
+
+
+def run_script_MVP_1(code_candidat):
+    '''
+    Cette fonction prend le code du candidat et renvoie un dictionnaire qui renvoie toutes les caractéristiques
+    évaluées par les autres fonctions du programme
+    :param code_candidat:
+    :return:
+    '''
+    resultats = {}
+    if len(list_functions(code_candidat)) != 0:
+        resultats['functionCount']=len(list_functions(code_candidat))
+    if len(list_tests(code_candidat)) != 0:
+        resultats['testCount']=len(list_tests(code_candidat))
+    resultats['commentCount']=compte_commentaires(code_candidat)
+    resultats['loopCount']=count_boucles(code_candidat)
+    resultats['tooLongLines']=caractere_ligne(code_candidat)
+    resultats['variableCount']=len(listes_de_variables(code_candidat))
+    print(resultats)
+    return resultats
 
 
 
