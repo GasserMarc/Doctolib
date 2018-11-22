@@ -54,8 +54,14 @@ def list_tests(tests_candidat):
                 list_of_tests.append(line[borne:pos2])
     return list_of_tests
 
-'''print(list_tests("EventCandidatATest.rb"))
-line = "il a dit : \'non\'"
-print(line)
-pos1 = line.find
-print(line.find('\''))'''
+print(list_tests("EventCandidatATest.rb"))
+#compte le nombre de vérifications faites par le candidat pour chaque test (donc pour chaque fonction)
+def asserts_par_test(tests_candidat):
+    with open(tests_candidat,"r") as tests:
+        lignes = tests.readlines()
+        compteur_asserts = 0
+        for ligne in lignes:
+
+    return compteur_asserts/len(list_tests(tests_candidat))
+
+print(asserts_par_test("EventCandidatATest.rb"))
