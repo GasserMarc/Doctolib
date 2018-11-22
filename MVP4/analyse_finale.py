@@ -20,12 +20,18 @@ def analyse_code_candidat (code_candidat):
     #analyse["pourcentage_functions_majuscules"]=majuscule_fonction(code_candidat)
     transformed=transformation_fichier(code_candidat)
     clean=suppr_blank_and_end(suppr_space(transformed))#on enleve les espaces les lignes vides et les lignes end
-    analyse["Duplication_sur_texte_non_nettoyé"]=coeff_dice(transformed,0.1)
     analyse["Duplication_sur_texte_nettoyé"]=coeff_dice(clean,0.3)
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
+    analyse["%detextesuspect"]=comparaison_code(code_candidat)
+    resultats=pd.DataFrame.from_dict(analyse, orient='index')
+    return(resultats)
 
-<<<<<<< HEAD
+
+print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
+print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb"))
+print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateC.rb"))
+
 def note_code_candidat(code_candidat):
     analyse = analyse_code_candidat(code_candidat)
     notes_candidat = {}
@@ -73,6 +79,5 @@ def note_code_candidat(code_candidat):
         notes_candidat["pourcentage_variables_mal_nommées"] = 2
     else:
         notes_candidat["pourcentage_variables_mal_nommées"] = 1
-
 
 
