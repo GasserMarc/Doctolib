@@ -154,3 +154,4 @@ def run_script_MVP_1(code_candidat):
 print(run_script_MVP_1("EventCandidatA.rb"))
 
 
+
