@@ -118,14 +118,17 @@ Cette fonction renvoie le nom des variables utilisées par le candidat
 def listes_de_variables(code_candidat):
     with open (code_candidat, "r" ) as code:
         lecture_code=code.readlines()
+        print (lecture_code)
         variables= []
         for line in lecture_code:
+            print (line)
             words=line.split()
             if len (words)<2:
                 pass #si il y a moins de 2 mots il ne peut pas avoir de variable
             elif words[1] == '=':
                 variables.append(words[0]) #cree la liste de variables
     return (variables)
+
 
 
 def run_script_MVP_1(code_candidat):
@@ -148,7 +151,29 @@ def run_script_MVP_1(code_candidat):
     return resultats
 
 
+def ratio_spaces(code_candidat):
+    with open(code_candidat,'r') as code:
+        text = code.read()
+        N = len(text)
+        n = text.count(' ')
+        return (n/N)* 100
 
-print(run_script_MVP_1("EventCandidatA.rb"))
+def ratio_commentaires(Code_candidat): #calcule le rapport commentaire/texte
+    with open (Code_candidat, 'r') as code:
+        texte = code.read()
+    with open (Code_candidat, 'r') as code:
+        lignes = code.readlines()
+    longueur_code = len(texte)
+    longueur_commentaires = 0
+    for i in range(len(lignes)):
+        ligne = lignes[i]
+        for lettre in ligne:
+            if lettre == '#':
+                pos = ligne.find('#')
+                l_commentaire = len(ligne[pos:]) - 1 #renvoie la longueur du commentaire en ne comptant pas '#"
+                longueur_commentaires += l_commentaire
+    return (longueur_commentaires/ longueur_code)*100 #renvoie un pourcentage
+
+
 
 
