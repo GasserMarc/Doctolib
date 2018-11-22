@@ -148,7 +148,7 @@ def run_script_MVP_1(code_candidat):
     return resultats
 
 
-print(run_script_MVP_1("EventCandidatA.rb"))
 
+print(run_script_MVP_1("EventCandidatA.rb"))
 
 
