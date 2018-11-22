@@ -25,6 +25,7 @@ def analyse_code_candidat (code_candidat):
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
 
+<<<<<<< HEAD
 def note_code_candidat(code_candidat):
     analyse = analyse_code_candidat(code_candidat)
     notes_candidat = {}
