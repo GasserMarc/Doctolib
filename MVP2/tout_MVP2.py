@@ -289,4 +289,3 @@ def run_script_MVP2(adresse):
 
     return(MVP2)
 
-print(run_script_MVP2("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateC.rb"))

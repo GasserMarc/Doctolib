@@ -24,6 +24,7 @@ def analyse_code_candidat (code_candidat):
     analyse["Duplication__sur_texte_nettoyé"]=coeff_dice(clean,0.3)
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
+    return analyse
 
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb"))
