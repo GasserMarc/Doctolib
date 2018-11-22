@@ -1,5 +1,6 @@
 from MVP1.tout_MVP1 import *
 from MVP2.tout_MVP2 import *
+
 from MVP3.fraude_nom_fonction import  *
 import pandas as pd
 
@@ -23,10 +24,6 @@ def analyse_code_candidat (code_candidat):
     analyse["Duplication__sur_texte_nettoyé"]=coeff_dice(clean,0.3)
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
-    analyse["%lignessuspectes"]= comparaison_code(code_candidat)
-    resultats=pd.DataFrame.from_dict(analyse, orient='index')
-    return(resultats)
-
 
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb"))
