@@ -1,4 +1,4 @@
-from MVP2.Analyse_fonctions import *
+
 import os
 
 
@@ -32,22 +32,21 @@ def comparaison_code(code_candidat):
     with open(code_candidat,"r") as candidat:
         #on va créer une liste contenant les lignes du code
         liste_ligne=candidat.readlines()
-        occurence=liste_ligne.count("end")
-        print(liste_ligne)
-        print(occurence)
-        for k in range (occurence):
-            liste_ligne.remove("end")#on va pas prendre en compte les end
+        occurences_end  = liste_ligne.count("  end\n")
+        occurences_n= liste_ligne.count("\n")
+        for k in range (occurences_end):
+            liste_ligne.remove("  end\n")
+        for i in range(occurences_n):
+            liste_ligne.remove("\n")
         for ligne in liste_ligne:
             #Pour chaque ligne du code candidat on va le tester avec les lignes des autres codes de la base de donnée
-            # for fichier in liste_fichier:
-                with open("C:\Marc\Coding_weeks\Doctolib\MVP1\EventCandidatA.rb", "r") as code_comparaison:
+            for fichier in liste_fichier:
+                with open("../Exemples_codes/"+ fichier, "r") as code_comparaison:
                     #pour chaque code, on crée une liste contenant ses lignes et on va tester si les lignes sont identiques
                     liste_ligne_comparaison=code_comparaison.readlines()
-                    if ligne in liste_ligne_comparaison:
+                if ligne in liste_ligne_comparaison:
                         lignes_identiques += 1
                         break
     return(lignes_identiques/len(liste_ligne)) #si renvoie
 
-print(comparaison_code("C:\Marc\Coding_weeks\Doctolib\MVP1\EventCandidatA.rb"))
-
-
+print(comparaison_code("C:\Marc\Coding_weeks\Doctolib\Exemples_codes\EventCandidatA.rb"))
