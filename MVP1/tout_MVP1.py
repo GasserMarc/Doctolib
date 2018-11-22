@@ -116,18 +116,16 @@ Cette fonction renvoie le nom des variables utilisées par le candidat
 '''
 
 def listes_de_variables(code_candidat):
-    with open(code_candidat, "r" ) as code:
-        lecture_code=code.read()
-        words=lecture_code.split(" ")
+    with open (code_candidat, "r" ) as code:
+        lecture_code=code.readlines()
         variables= []
-        for i in range (len(words)):
-            if words[i] == '=':
-                if i==0:
-                    break
-                else:
-                    variables.append(words[i-1]) #cree la liste de variables
-    return variables
-
+        for line in lecture_code:
+            words=line.split()
+            if len (words)<2:
+                pass #si il y a moins de 2 mots il ne peut pas avoir de variable
+            elif words[1] == '=':
+                variables.append(words[0]) #cree la liste de variables
+    return (variables)
 
 
 def run_script_MVP_1(code_candidat):
