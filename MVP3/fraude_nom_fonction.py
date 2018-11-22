@@ -76,4 +76,3 @@ def comparaison_code(code_candidat):
                         lignes_identiques += 1
                         break
     return(lignes_identiques/len(liste_ligne)) #si renvoie
-
