@@ -65,10 +65,6 @@ def comparaison_code(Code1,Code2):
                     return compteur
 
 
-print(comparaison_code("essai1.rb","essai2.rb"))
-
-
-
 
 
 

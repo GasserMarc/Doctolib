@@ -8,6 +8,8 @@ On part sur un score selon chaque critère, pondération de chaque critère par 
 I - Architecture : performance
 - nombre de lines de codes : 
 - nombre de boucles imbriquées
+- pourcentage de code dupliqué à l'interieur du code: pourcentage
+- rapport tests / fonctions
 
 II - Lisibilité :
 - nombre de fonctions
@@ -15,13 +17,11 @@ II - Lisibilité :
 - nommage des fonctions rigoureux
 - densité des commentaires
 - proportion du code recouvert par des textes
-- rapport tests / fonctions
 - nombre de caractères par lignes (nombre de lignes avec plus de tant de caractères)
 - Faire une fonction pour l'esthétique du code : densité espaces / caractères
 
 III - Controle de la Fraude
-- pourcentage de code dupliqué à l'interieur du code: pourcentage
-- définir un seuil acceptable de copie du code par rapport au
+- définir un seuil acceptable de copie du code par rapport aux EventsCandidats déjà enregistrés.
 
 
 
