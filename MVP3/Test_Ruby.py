@@ -1,4 +1,4 @@
-import os
+mport os
 
 #compte le nombre de fonctions dans le fichier de code du candidat
 def count_fonction(Code_Candidat):
@@ -49,34 +49,29 @@ def comparaison_code(Code_Candidat, Code_comparaison):#on prend le fichier du ca
 
 print(comparaison_code("EventCandidatA.rb","EventCandidatATest.rb"))
 
-#on cherche
-def comparaison_code_avance(Code_Candidat, Code_comparaison, Code_Annexe):
-    with open(Code_Candidat) as fichier1:
-        with open(Code_comparaison) as fichier2:
-            fichierannexe=open(Code_Annexe,"a")
-            for line1 in fichier1:
-                for line2 in fichier2:
-                    if line1==line2:
-                        fichierannexe.write("Les lignes identiques sont : %s " %(line1))
-                    elif line1 != line2:
-                        fichierannexe.write("Les lignes sont différentes")
+def conversionlistetochaine(chaine2caracteres):
+    liste=chaine2caracteres.split()
+    return liste
 
-#print(comparaison_code_avance("essai1.rb","essai2.rb","essaiannexe.txt"))
-
-
-def compar2(Code1,Code2,Code3):
-     with open(Code1,"r") as code1:
+def comparaison_code(Code1,Code2,Code3):
+    with open(Code1,"r") as code1:
         with open(Code2, "r") as code2:
             with open (Code3,"a") as code3:
                 similarite = set(code1).intersection(code2)
                 similarite.discard('\n')
                 with open (Code3,"a") as code3:
-                    for line in similarite:
-                        code3.write("Les lignes identiques sont : %s " %line) #uniquement si il y a des similarités les renvoie dans ce cas
+                    compteur=0
+                    for line in similarite :
+                        if len(line)==0:
+                            print("Il n'y aucune lignes identiques")
+                        elif len(line)!=0:
+                          print("Les lignes identiques sont : %s " %line)
+                          compteur+=1
+                    print("Le nombre de lignes identiques est : %s" %(len(line)))
+                    return compteur
 
-print(compar2("EventCandidatA.rb","EventCandidatATest.rb","essaiannexe.txt"))
 
-
+print(comparaison_code("essai1.rb","essai2.rb","essai3.rb"))
 
 
 
