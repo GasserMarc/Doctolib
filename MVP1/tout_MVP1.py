@@ -25,6 +25,7 @@ def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du
             list_of_functions.append(remove_special(mots[i+1]))
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
+print(list_functions("EventCandidatA.rb"))
 
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
@@ -77,7 +78,21 @@ def list_tests(tests_candidat):
                 pos2 = newline[pos1:].find('"')
                 list_of_tests.append(line[borne:pos2])
     return list_of_tests
-
+'''
+Cette fonction renvoie la moyenne des vérifications effectuées dans chaque test
+'''
+def asserts_par_test(tests_candidat):
+    with open(tests_candidat,"r") as tests:
+        lignes = tests.readlines()
+        compteur_asserts = 0
+        for ligne in lignes:
+            words = ligne.split()
+            try:
+                if words[0][:6]=='assert':
+                    compteur_asserts+=1
+            except IndexError:
+                pass
+        return compteur_asserts/len(list_tests(tests_candidat))
 
 '''
 Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candidat
@@ -146,9 +161,3 @@ def run_script_MVP_1(code_candidat):
     resultats['variableCount']=len(listes_de_variables(code_candidat))
     print(resultats)
     return resultats
-
-
-
-print(run_script_MVP_1("EventCandidatA.rb"))
-
-

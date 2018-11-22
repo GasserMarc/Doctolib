@@ -1,0 +1,8 @@
+[
+  "test_tout_MVP1_pytest.py::test_remove_special",
+  "test_tout_MVP1_pytest.py::test_list_functions",
+  "test_tout_MVP1_pytest.py::test_compte_commentaires",
+  "test_tout_MVP1_pytest.py::test_list_tests",
+  "test_tout_MVP1_pytest.py::test_count_boucles",
+  "test_tout_MVP1_pytest.py::test_listes_de_variables"
+]
