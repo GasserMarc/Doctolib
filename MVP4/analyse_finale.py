@@ -29,10 +29,4 @@ def analyse_code_candidat (code_candidat):
     resultats=pd.DataFrame.from_dict(analyse, orient='index')
     return(resultats)
 
-<<<<<<< HEAD
-print(analyse_code_candidat("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
-=======
-print(analyse_code_candidat("C:/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
 
-
->>>>>>> master
