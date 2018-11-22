@@ -151,4 +151,4 @@ def run_script_MVP_1(code_candidat):
     return resultats
 
 
-run_script_MVP_1("/Users/Marie/PycharmProjects/Doctolib/Exemples_codes/EventCandidateBTest.rb")
+
