@@ -5,7 +5,7 @@ import pandas as pd
 from Exemples_codes import *
 import numpy as np
 import matplotlib as plt
-
+nb de ligne t'enlèev 2 fois bn de fonction/nb fonction'
 def analyse_code_candidat (code_candidat):
     analyse ={}
     if len(list_functions(code_candidat)) != 0:

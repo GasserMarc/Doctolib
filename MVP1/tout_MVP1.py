@@ -25,6 +25,15 @@ def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du
             list_of_functions.append(remove_special(mots[i+1]))
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
+def taille_moyenne_fonctions(code_candidat):
+    with open (code_candidat, "r") as code:
+        lines=code.readlines()
+        taille_fichier=len(lines)
+        nb_de_fonctions=len(list_functions(code_candidat))
+        taille_moyenne_fonction=(taille_fichier-2*nb_de_fonctions)/nb_de_fonctions
+        print (taille_moyenne_fonction)
+
+print(taille_moyenne_fonctions("C:/Users/Marie/PycharmProjects/Doctolib/MVP1/EventCandidatA.rb"))
 
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
