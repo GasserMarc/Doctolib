@@ -1,0 +1,3 @@
+Les lignes identiques sont :   end
+ Les lignes identiques sont : end
+ 

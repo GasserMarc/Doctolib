@@ -44,9 +44,8 @@ def compte_commentaires(file_name):
             # cette boucle repère les blocs de commentaires
             # seul le premier # du bloc permet d'ajouter un commentaire
             if i>0:
-                if lines[i][0]=='#':
-                    if lines[i-1][0] != '#':
-                        nombre_commentaires += 1
+                if lines[i][0]=='#' and lines[i-1][0]!="#":
+                    nombre_commentaires += 1
             else:
                 for x in lines[i]:
                     if x == '#':
@@ -140,9 +139,11 @@ def run_script_MVP_1(code_candidat):
     :return:
     '''
     resultats = {}
-    resultats['functionCount']=len(list_functions(code_candidat))
+    if len(list_functions(code_candidat)) != 0:
+        resultats['functionCount']=len(list_functions(code_candidat))
+    if len(list_tests(code_candidat)) != 0:
+        resultats['testCount']=len(list_tests(code_candidat))
     resultats['commentCount']=compte_commentaires(code_candidat)
-    resultats['testCount']=len(list_tests(code_candidat))
     resultats['loopCount']=count_boucles(code_candidat)
     resultats['tooLongLines']=caractere_ligne(code_candidat)
     resultats['variableCount']=len(listes_de_variables(code_candidat))
@@ -150,3 +151,4 @@ def run_script_MVP_1(code_candidat):
     return resultats
 
 run_script_MVP_1("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb")
+

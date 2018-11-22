@@ -1,7 +1,5 @@
 """Le but est de nettoyer le texte"""
 
-from MVP2.liste_variables import *
-
 
 def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique à la machine
     try:
