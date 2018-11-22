@@ -26,6 +26,14 @@ def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du
     return list_of_functions #renvoie la liste des fonctions et le nombre de fonctions
 
 
+def taille_moyenne_fonctions(code_candidat):
+    with open (code_candidat, "r") as code:
+        lines=code.readlines()
+        taille_fichier=len(lines)
+        nb_de_fonctions=len(list_functions(code_candidat))
+        taille_moyenne_fonction=(taille_fichier)/nb_de_fonctions
+        return (taille_moyenne_fonction)
+
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
 '''
@@ -77,7 +85,21 @@ def list_tests(tests_candidat):
                 pos2 = newline[pos1:].find('"')
                 list_of_tests.append(line[borne:pos2])
     return list_of_tests
-
+'''
+Cette fonction renvoie la moyenne des vérifications effectuées dans chaque test
+'''
+def asserts_par_test(tests_candidat):
+    with open(tests_candidat,"r") as tests:
+        lignes = tests.readlines()
+        compteur_asserts = 0
+        for ligne in lignes:
+            words = ligne.split()
+            try:
+                if words[0][:6]=='assert':
+                    compteur_asserts+=1
+            except IndexError:
+                pass
+        return compteur_asserts/len(list_tests(tests_candidat))
 
 '''
 Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candidat
@@ -110,6 +132,13 @@ def caractere_ligne (code_candidat):
         #print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
     return compteur
 
+def pourcentage_toolonglines(code_candidat):
+    with open(code_candidat,"r") as code :
+        liste_ligne= code.readlines() # liste de ligne
+        longueur=len(liste_ligne)
+        pourcentage=((caractere_ligne(code_candidat)*100)/longueur)
+        return pourcentage
+
 
 '''
 Cette fonction renvoie le nom des variables utilisées par le candidat
@@ -118,14 +147,75 @@ Cette fonction renvoie le nom des variables utilisées par le candidat
 def listes_de_variables(code_candidat):
     with open (code_candidat, "r" ) as code:
         lecture_code=code.readlines()
+        print (lecture_code)
         variables= []
         for line in lecture_code:
+            print (line)
             words=line.split()
             if len (words)<2:
                 pass #si il y a moins de 2 mots il ne peut pas avoir de variable
             elif words[1] == '=':
                 variables.append(words[0]) #cree la liste de variables
     return (variables)
+
+def ratio_spaces(code_candidat):
+    with open(code_candidat,'r') as code:
+        text = code.read()
+        N = len(text)
+        n = text.count(' ')
+        return (n/N)* 100
+
+def ratio_commentaires(Code_candidat): #calcule le rapport commentaire/texte
+    with open (Code_candidat, 'r') as code:
+        texte = code.read()
+    with open (Code_candidat, 'r') as code:
+        lignes = code.readlines()
+    longueur_code = len(texte)
+    longueur_commentaires = 0
+    for i in range(len(lignes)):
+        ligne = lignes[i]
+        for lettre in ligne:
+            if lettre == '#':
+                pos = ligne.find('#')
+                l_commentaire = len(ligne[pos:]) - 1 #renvoie la longueur du commentaire en ne comptant pas '#"
+                longueur_commentaires += l_commentaire
+    return (longueur_commentaires/ longueur_code)*100 #renvoie un pourcentage
+
+
+def compte_lignes_non_code(code_candidat):
+    """
+    Cette fonction renvoie le nombre de lignes qui ne contiennent pas de code à proprement parler
+    :param code_candidat:
+    :return:
+    """
+    nombre_lignes_non_code = 0
+    with open(code_candidat,'r') as code:
+        lines = code.readlines()
+        print(lines)
+        for line in lines:
+            if line == '\n':
+                nombre_lignes_non_code += 1
+            words = line.split()
+            try:
+                if words[0]=="#":
+                    nombre_lignes_non_code += 1
+            except IndexError:
+                pass
+        return nombre_lignes_non_code
+
+
+def lignes_par_fonction(code_candidat):
+    """
+    Cette fonction renvoie le nombre de lignes moyennes utilisées pour écrire une fonction
+    :param code_candidat:
+    :return:
+    """
+    nb_fonctions = len(list_functions(code_candidat))
+    with open(code_candidat, 'r') as code:
+        lignes = code.readlines()
+        nb_lignes_codees=len(lignes)-compte_lignes_non_code(code_candidat)
+        return nb_lignes_codees/nb_fonctions
+
 
 
 def run_script_MVP_1(code_candidat):
@@ -147,8 +237,5 @@ def run_script_MVP_1(code_candidat):
     print(resultats)
     return resultats
 
-
-
-print(run_script_MVP_1("EventCandidatA.rb"))
 
 

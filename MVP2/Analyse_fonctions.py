@@ -61,7 +61,12 @@ def asserts_par_test(tests_candidat):
         lignes = tests.readlines()
         compteur_asserts = 0
         for ligne in lignes:
-
-    return compteur_asserts/len(list_tests(tests_candidat))
+            words = ligne.split()
+            try:
+                if words[0][:6]=='assert':
+                    compteur_asserts+=1
+            except IndexError:
+                pass
+        return compteur_asserts/len(list_tests(tests_candidat))
 
 print(asserts_par_test("EventCandidatATest.rb"))
