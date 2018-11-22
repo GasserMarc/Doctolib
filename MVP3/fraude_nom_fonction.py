@@ -1,34 +1,35 @@
 
 import os
+import os.path
 
-
-def fonction_de_meme_nom(code_candidat):
-    '''cette fonction regarde pour chaque fonction du code écrit
-    par le candidat s'il correspond une fonction de même nom
-    dans les fichiers de comparaison'''
-
-    #on va récuperer la liste de fonctions du candidat
-    list_functions_candidat = list_functions(code_candidat)
-    #on va créer une liste qui va contenir les informations (nom de la fonction et son nombre d'itérations)
-    liste_bilan=[]
-    #on va créer une liste contenant le nom des codes contenues dans la base de donnée
-    liste_fichier = os.listdir("../Exemples_codes/")
-    for nom_Fonction in list_functions_candidat:
-        compteur=0
-        #pour chaque fonction du candidat on va ouvrir les anciens codes et verifier le nom
-        for fichier in liste_fichier:
-            list_functions_comparaison= list_functions(str("../Exemples_codes/" + fichier))
-
-            if nom_Fonction in list_functions_comparaison:
-                compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
-        liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
-    return liste_bilan
+# def fonction_de_meme_nom(code_candidat):
+#     '''cette fonction regarde pour chaque fonction du code écrit
+#     par le candidat s'il correspond une fonction de même nom
+#     dans les fichiers de comparaison'''
+#
+#     #on va récuperer la liste de fonctions du candidat
+#     list_functions_candidat = list_functions(code_candidat)
+#     #on va créer une liste qui va contenir les informations (nom de la fonction et son nombre d'itérations)
+#     liste_bilan=[]
+#     #on va créer une liste contenant le nom des codes contenues dans la base de donnée
+#     liste_fichier = os.listdir("../Exemples_codes/")
+#     for nom_Fonction in list_functions_candidat:
+#         compteur=0
+#         #pour chaque fonction du candidat on va ouvrir les anciens codes et verifier le nom
+#         for fichier in liste_fichier:
+#             list_functions_comparaison= list_functions(str("../Exemples_codes/" + fichier))
+#
+#             if nom_Fonction in list_functions_comparaison:
+#                 compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
+#         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
+#     return liste_bilan
 
 def comparaison_code(code_candidat):
 
     #crée une liste contenant le nom des codes stockés
     liste_fichier=os.listdir("../Exemples_codes/")
     lignes_identiques=0
+    liste_fichier.pop(liste_fichier.index(os.path.basename(code_candidat)))
     with open(code_candidat,"r") as candidat:
         #on va créer une liste contenant les lignes du code
         liste_ligne=candidat.readlines()
