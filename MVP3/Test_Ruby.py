@@ -80,4 +80,3 @@ print(comparaison_code("essai1.rb","essai2.rb","essai3.rb"))
 
 
 
-
