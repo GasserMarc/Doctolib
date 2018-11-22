@@ -33,7 +33,7 @@ def controle_nom_variable (code_candidat):
     :param code_candidat:
     :return nb de variables mal nommées:
     '''
-    variables=listes_de_variables(code_candidat)[0]
+    variables=listes_de_variables(code_candidat)
     nb_variable_mal_nommees=0 #compteur du nombre de variables mal nommées, avec des noms non explicites
     for nom_variables in variables:
         if len(nom_variables)<=1: #si les variables ont un nom non explicite, avec une lettre
@@ -48,9 +48,10 @@ def calcul_pourcentage_variables_mal_nommees(code_candidat):
     :return:
     '''
     nb_variables_mal_nommees=controle_nom_variable(code_candidat)
-    variables=listes_de_variables(code_candidat)[0]
+    variables=listes_de_variables(code_candidat)
     pourcentage_mal_nommees=((nb_variables_mal_nommees*100)/len(variables))
     return pourcentage_mal_nommees
+
 
 def majuscule_variable(code_candidat):
     '''
