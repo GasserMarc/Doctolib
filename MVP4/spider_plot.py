@@ -2,17 +2,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
- 
+from MVP4.analyse_finale import *
+
 # On définit la DataFrame dans pandas pour associer les valeurs
-df = pd.DataFrame({
-'candidat': ['A','B','C'],
-'nb_fonctions': [1, 3, 3],
-'variables': [4, 2, 4],
-'longueur_lignes': [2, 3, 2],
-'ratio_text_fonctions': [3, 3, 3],
-'boucles': [4, 1, 2],
-'nombre': [3,2,3]
-})
+df = pd.DataFrame.from_dict(dico_graphe(["/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb",
+                                         "/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb",
+                                         "/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateC.rb"]))
  
 # On définit le nombre de variables
 categories=list(df)[1:]
