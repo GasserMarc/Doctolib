@@ -40,42 +40,6 @@ def nombre2commentaires(Code_Candidat):
         return(nombredecomm)
 print(nombre2commentaires("EventCandidatA.rb"))
 
-#on compare 2 codes initialement et on regarde si les 2 codes font la même taille en bytes
-def comparaison_code(Code_Candidat, Code_comparaison):#on prend le fichier du candidat et celui de comparaison
-    if (os.path.getsize(Code_Candidat)) == (os.path.getsize(Code_comparaison)):#on compare les tailles des 2 fichiers
-        print("Les 2 codes ont la même taille, ils sont sûrement similaires")
-    else:
-        print("Les 2 codes n'ont pas la même taille, continuons à analyser la fraude")
-
-print(comparaison_code("EventCandidatA.rb","EventCandidatATest.rb"))
-
-#on cherche
-def comparaison_code_avance(Code_Candidat, Code_comparaison, Code_Annexe):
-    with open(Code_Candidat) as fichier1:
-        with open(Code_comparaison) as fichier2:
-            fichierannexe=open(Code_Annexe,"a")
-            for line1 in fichier1:
-                for line2 in fichier2:
-                    if line1==line2:
-                        fichierannexe.write("Les lignes identiques sont : %s " %(line1))
-                    elif line1 != line2:
-                        fichierannexe.write("Les lignes sont différentes")
-
-#print(comparaison_code_avance("essai1.rb","essai2.rb","essaiannexe.txt"))
-
-
-def compar2(Code1,Code2,Code3):
-     with open(Code1,"r") as code1:
-        with open(Code2, "r") as code2:
-            with open (Code3,"a") as code3:
-                similarite = set(code1).intersection(code2)
-                similarite.discard('\n')
-                with open (Code3,"a") as code3:
-                    for line in similarite:
-                        code3.write("Les lignes identiques sont : %s " %line) #uniquement si il y a des similarités les renvoie dans ce cas
-
-print(compar2("EventCandidatA.rb","EventCandidatATest.rb","essaiannexe.txt"))
-
 
 
 
