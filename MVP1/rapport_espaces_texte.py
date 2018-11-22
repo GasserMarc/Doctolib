@@ -1,7 +1,7 @@
 
 
-def ratio_spaces(Code_candidat):
-    with open(Code_candidat,'r') as code:
+def ratio_spaces(code_candidat):
+    with open(code_candidat,'r') as code:
         text = code.read()
         N = len(text)
         n = text.count(' ')
