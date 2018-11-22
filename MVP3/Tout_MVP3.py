@@ -18,7 +18,6 @@ def fonction_de_meme_nom(code_candidat):
         #pour chaque fonction du candidat on va ouvrir les anciens codes et verifier le nom
         for fichier in liste_fichier:
             list_functions_comparaison= list_functions(str("../Exemples_codes/" + fichier))
-
             if nom_Fonction in list_functions_comparaison:
                 compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
