@@ -23,3 +23,5 @@ def fonction_de_meme_nom(code_candidat):
                 compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
     return liste_bilan
+
+
