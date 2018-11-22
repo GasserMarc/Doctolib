@@ -1,4 +1,4 @@
-mport os
+import os
 
 #compte le nombre de fonctions dans le fichier de code du candidat
 def count_fonction(Code_Candidat):
@@ -14,9 +14,6 @@ def count_fonction(Code_Candidat):
     print("Le fichier contient " ,compteur, "fonction(s)")
     return (compteur)
 
-
-print(count_fonction("EventCandidatA.rb"))
-
 #on compte le nombre de boucles dans le code du candidat, définie par "each"
 def count_boucles(Code_Candidat):
     with open (Code_Candidat,"r") as code :
@@ -27,7 +24,6 @@ def count_boucles(Code_Candidat):
         print("Le fichier contient" ,nombredeboucle, "fois une boucle")
         return(nombredeboucle)
 
-print(count_boucles("EventCandidatA.rb"))
 
 #on compte le nombre de commentaires dans le code du candidat, définie par un # ou bien un =begin (...)=end
 def nombre2commentaires(Code_Candidat):
@@ -38,13 +34,7 @@ def nombre2commentaires(Code_Candidat):
         nombredecomm=(textealire.count("#"))+(textealire.count("=end"))
         print("Le fichier contient" ,nombredecomm, "commentaire(s)")
         return(nombredecomm)
-print(nombre2commentaires("EventCandidatA.rb"))
 
-<<<<<<< HEAD:MVP1/Test_Ruby.py
-
-
-
-=======
 #on compare 2 codes initialement et on regarde si les 2 codes font la même taille en bytes
 def comparaison_code(Code_Candidat, Code_comparaison):#on prend le fichier du candidat et celui de comparaison
     if (os.path.getsize(Code_Candidat)) == (os.path.getsize(Code_comparaison)):#on compare les tailles des 2 fichiers
@@ -52,32 +42,29 @@ def comparaison_code(Code_Candidat, Code_comparaison):#on prend le fichier du ca
     else:
         print("Les 2 codes n'ont pas la même taille, continuons à analyser la fraude")
 
-print(comparaison_code("EventCandidatA.rb","EventCandidatATest.rb"))
 
-def conversionlistetochaine(chaine2caracteres):
-    liste=chaine2caracteres.split()
+def conversionchainetoliste(chaine2caracteres):
+    liste=chaine2caracteres.split(',')
     return liste
 
-def comparaison_code(Code1,Code2,Code3):
+def comparaison_code(Code1,Code2):
     with open(Code1,"r") as code1:
         with open(Code2, "r") as code2:
-            with open (Code3,"a") as code3:
-                similarite = set(code1).intersection(code2)
-                similarite.discard('\n')
-                with open (Code3,"a") as code3:
-                    compteur=0
-                    for line in similarite :
-                        if len(line)==0:
-                            print("Il n'y aucune lignes identiques")
-                        elif len(line)!=0:
-                          print("Les lignes identiques sont : %s " %line)
-                          compteur+=1
-                    print("Le nombre de lignes identiques est : %s" %(len(line)))
+            similarite = set(code1).intersection(code2)
+            similarite.discard('\n')
+            compteur=0
+            for line in similarite :
+                listedelignes=conversionchainetoliste(line)
+                print(listedelignes)
+                if len(listedelignes)==0:
+                    print("Il n'y aucune lignes identiques")
+                elif len(listedelignes)!=0:
+                    print("Les lignes identiques sont : %s " %listedelignes)
+                    compteur+=1
+                    print("Le nombre de lignes identiques est : %s" %(len(listedelignes)))
                     return compteur
 
 
-print(comparaison_code("essai1.rb","essai2.rb","essai3.rb"))
->>>>>>> master:MVP3/Test_Ruby.py
 
 
 
