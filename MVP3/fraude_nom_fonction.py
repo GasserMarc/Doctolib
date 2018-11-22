@@ -44,6 +44,10 @@ def comparaison_code(code_candidat):
                 with open("../Exemples_codes/"+ fichier, "r") as code_comparaison:
                     #pour chaque code, on crée une liste contenant ses lignes et on va tester si les lignes sont identiques
                     liste_ligne_comparaison=code_comparaison.readlines()
+                    similarite=set(code_candidat).intersection(code_comparaison)
+                for line in similarite :
+                    listedelignes=line.split()
+                    print("Les lignes identiques sont : %s" %listedelignes)
                 if ligne in liste_ligne_comparaison:
                         lignes_identiques += 1
                         break
