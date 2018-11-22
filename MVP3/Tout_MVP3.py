@@ -22,3 +22,33 @@ def fonction_de_meme_nom(code_candidat):
                 compteur += 1 #on ajoute 1 si on trouve la fonction dans la base de donnée
         liste_bilan.append(nom_Fonction+ " apparait " + str(compteur)+ " fois dans la base de données")
     return liste_bilan
+
+
+def comparaison_code(code_candidat):
+
+    #crée une liste contenant le nom des codes stockés
+    liste_fichier=os.listdir("../Exemples_codes/")
+    lignes_identiques=0
+    liste_fichier.pop(liste_fichier.index(os.path.basename(code_candidat)))
+    with open(code_candidat,"r") as candidat:
+        #on va créer une liste contenant les lignes du code
+        liste_ligne=candidat.readlines()
+        occurences_end  = liste_ligne.count("  end\n")
+        occurences_n= liste_ligne.count("\n")
+        for k in range (occurences_end):
+            liste_ligne.remove("  end\n")
+        for i in range(occurences_n):
+            liste_ligne.remove("\n")
+        for ligne in liste_ligne:
+            #Pour chaque ligne du code candidat on va le tester avec les lignes des autres codes de la base de donnée
+            for fichier in liste_fichier:
+                with open("../Exemples_codes/"+ fichier, "r") as code_comparaison:
+                    #pour chaque code, on crée une liste contenant ses lignes et on va tester si les lignes sont identiques
+                    liste_ligne_comparaison=code_comparaison.readlines()
+                    similarite=set(code_candidat).intersection(code_comparaison)
+                for line in similarite :
+                    listedelignes=line.split()
+                if ligne in liste_ligne_comparaison:
+                        lignes_identiques += 1
+                        break
+    return(lignes_identiques/len(liste_ligne)) #si renvoie
