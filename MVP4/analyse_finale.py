@@ -5,19 +5,15 @@ import pandas as pd
 from Exemples_codes import *
 import numpy as np
 import matplotlib as plt
-nb de ligne t'enlèev 2 fois bn de fonction/nb fonction'
+
 def analyse_code_candidat (code_candidat):
     analyse ={}
-    if len(list_functions(code_candidat)) != 0:
-        analyse['functionCount']=len(list_functions(code_candidat))
+    analyse['taillemoyennefonction']=taille_moyenne_fonctions(code_candidat)
     if len(list_tests(code_candidat)) != 0:
         analyse['testCount']=len(list_tests(code_candidat))
-    analyse['commentCount']=compte_commentaires(code_candidat)
-    analyse['loopCount']=count_boucles(code_candidat)
-    analyse['tooLongLines']=caractere_ligne(code_candidat)
-    analyse['variableCount']=len(listes_de_variables(code_candidat))
+    analyse['%tooLongLines']=pourcentage_toolonglines(code_candidat)
     analyse["pourcentage_variables_mal_nommées"]=calcul_pourcentage_variables_mal_nommees(code_candidat)
-    #MVP2["pourcentage_variables_majuscules"]=majuscule_variable(code_candidat)
+    analyse["pourcentage_variables_majuscules"]=majuscule_variable(code_candidat)
     analyse["pourcentage_fonctions_mal_nommées"]=calcul_pourcentage_fonctions_mal_nommees(code_candidat)
     #MVP2["pourcentage_functions_majuscules"]=majuscule_fonction(adresse)
     transformed=transformation_fichier(code_candidat)

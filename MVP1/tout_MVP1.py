@@ -30,10 +30,10 @@ def taille_moyenne_fonctions(code_candidat):
         lines=code.readlines()
         taille_fichier=len(lines)
         nb_de_fonctions=len(list_functions(code_candidat))
-        taille_moyenne_fonction=(taille_fichier-2*nb_de_fonctions)/nb_de_fonctions
-        print (taille_moyenne_fonction)
+        taille_moyenne_fonction=(taille_fichier)/nb_de_fonctions
+        return (taille_moyenne_fonction)
 
-print(taille_moyenne_fonctions("C:/Users/Marie/PycharmProjects/Doctolib/MVP1/EventCandidatA.rb"))
+
 
 '''
 Cette fonction compte le nombre de commentaires dans le code du candidat
@@ -118,6 +118,13 @@ def caractere_ligne (code_candidat):
                     compteur += 1
         #print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
     return compteur
+
+def pourcentage_toolonglines(code_candidat):
+    with open(code_candidat,"r") as code :
+        liste_ligne= code.readlines() # liste de ligne
+        longueur=len(liste_ligne)
+        pourcentage=((caractere_ligne(code_candidat)*100)/longueur)
+        return pourcentage
 
 
 '''
