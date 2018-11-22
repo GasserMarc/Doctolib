@@ -40,6 +40,11 @@ def nombre2commentaires(Code_Candidat):
         return(nombredecomm)
 print(nombre2commentaires("EventCandidatA.rb"))
 
+<<<<<<< HEAD:MVP1/Test_Ruby.py
+
+
+
+=======
 #on compare 2 codes initialement et on regarde si les 2 codes font la même taille en bytes
 def comparaison_code(Code_Candidat, Code_comparaison):#on prend le fichier du candidat et celui de comparaison
     if (os.path.getsize(Code_Candidat)) == (os.path.getsize(Code_comparaison)):#on compare les tailles des 2 fichiers
@@ -72,6 +77,7 @@ def comparaison_code(Code1,Code2,Code3):
 
 
 print(comparaison_code("essai1.rb","essai2.rb","essai3.rb"))
+>>>>>>> master:MVP3/Test_Ruby.py
 
 
 

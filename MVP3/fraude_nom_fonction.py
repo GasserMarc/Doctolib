@@ -50,3 +50,4 @@ def comparaison_code(code_candidat):
 
 print(comparaison_code("C:\Marc\Coding_weeks\Doctolib\MVP1\EventCandidatA.rb"))
 
+
