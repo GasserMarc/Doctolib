@@ -117,11 +117,7 @@ def controle_nom_fonction(code_candidat):
             nb_fonctions_mal_nommees+=1
     return nb_fonctions_mal_nommees
 
-<<<<<<< HEAD
 
-=======
-print(controle_nom_fonction("EventCandidatA.rb"))
->>>>>>> master
 
 def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     '''
