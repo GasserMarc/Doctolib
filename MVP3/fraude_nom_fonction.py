@@ -1,4 +1,3 @@
-
 import os
 
 def fonction_de_meme_nom(code_candidat):
