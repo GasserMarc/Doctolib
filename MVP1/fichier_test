@@ -1,8 +1,0 @@
-import difflib
-
-text1 = open("essai1.rb").readlines()
-text2 = open("essai2.rb").readlines()
-
-for line in difflib.unified_diff(text1, text2):
-    print line
-
