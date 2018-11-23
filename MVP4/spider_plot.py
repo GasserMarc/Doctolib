@@ -57,6 +57,7 @@ values += values[:1]
 ax.plot(angles, values, linewidth=1, linestyle='solid', label="Candidat B")
 ax.fill(angles, values, 'r', alpha=0.1)
 
+
 # Candidat 3 en vert
 values=df.loc[2].drop('candidats').values.flatten().tolist()
 values += values[:1]

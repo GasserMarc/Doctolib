@@ -21,7 +21,7 @@ def analyse_code_candidat (code_candidat):
     analyse["duplication_sur_texte_nettoye"]=coeff_dice(clean,0.3)
     analyse["densite_de_commentaires"]=ratio_commentaires(code_candidat)
     analyse["densite_d_espace"]=ratio_spaces(code_candidat)
-    analyse["%detextesuspect"]=comparaison_code(code_candidat)
+    analyse["textesuspect"]=comparaison_code(code_candidat)
     #resultats=pd.DataFrame.from_dict(analyse, orient='index')
     return analyse #resultats
 
