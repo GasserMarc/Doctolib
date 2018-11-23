@@ -86,8 +86,8 @@ def list_tests(tests_candidat):
 '''
 Cette fonction renvoie la moyenne des vérifications effectuées dans chaque test
 '''
-def asserts_par_test(tests_candidat):
-    with open(tests_candidat,"r") as tests:
+def asserts_par_test(code_candidat):
+    with open(code_candidat[:-3]+'Test.rb',"r") as tests:
         lignes = tests.readlines()
         compteur_asserts = 0
         for ligne in lignes:
@@ -97,7 +97,9 @@ def asserts_par_test(tests_candidat):
                     compteur_asserts+=1
             except IndexError:
                 pass
-        return compteur_asserts/len(list_tests(tests_candidat))
+        return compteur_asserts/len(list_tests(code_candidat[:-3]+'Test.rb'))
+
+#print(asserts_par_test("../Exemples_codes/EventCandidatA.rb"))
 
 '''
 Cette fonction renvoie le nombre de boucles imbriquées utilisées par le candidat
