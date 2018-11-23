@@ -5,9 +5,10 @@ from math import pi
 from MVP4.analyse_finale import *
 
 # On définit la DataFrame dans pandas pour associer les valeurs
-dico = dico_graphe(["../Exemples_codes/EventCandidatA.rb",
+code_candidats = ["../Exemples_codes/EventCandidatA.rb",
                                          "../Exemples_codes/EventCandidateB.rb",
-                                         "../Exemples_codes/EventCandidateC.rb"])
+                                         "../Exemples_codes/EventCandidateC.rb"]
+dico = dico_graphe(code_candidats)
 
 df = pd.DataFrame.from_dict(dico)
 
@@ -37,14 +38,15 @@ plt.ylim(0,4)
 
 
 for i in range(len(dico['candidats'])):
+    moy_candidat = moyenne_coefficients(code_candidats[i])
     values=df.loc[i].drop('candidats').values.flatten().tolist()
     values += values[:1]
-    ax.plot(angles, values, linewidth=1, linestyle='solid', label=dico['candidats'][i])
+    ax.plot(angles, values, linewidth=1, linestyle='solid', label=dico['candidats'][i]+' : Note = '+str(moy_candidat)[:4])
     ax.fill(angles, values, alpha=0.1)
 
 # On ajoute les légendes
 plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-plt.title("Notes candidats")
+plt.title("Evaluation des candidats")
 
 # On affiche le graphe
 plt.show()
