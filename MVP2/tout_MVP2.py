@@ -124,8 +124,6 @@ def controle_nom_fonction(code_candidat):
             nb_fonctions_mal_nommees+=1
     return nb_fonctions_mal_nommees
 
-print(controle_nom_fonction("EventCandidatA.rb"))
-
 def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     '''
     Pourcentage de fonctions mal nommées dans le code
@@ -182,6 +180,7 @@ def suppr_space(list):
         new_list=new_list+[new]
     return (new_list)
 
+
 def suppr_blank_and_end(list):
     """
     Supprime les end et les lignes vierges
@@ -211,6 +210,7 @@ def egalitelist (chaine1,chaine2):
         for k in range(n2-n1):
             chaine1=chaine1 + " "
     return ([str(chaine1),str(chaine2)])
+
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -289,3 +289,4 @@ def run_script_MVP2(adresse):
 
     return(MVP2)
 
+print(list_functions("EventCandidatA.rb"))
