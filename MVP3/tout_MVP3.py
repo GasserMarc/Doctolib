@@ -1,4 +1,4 @@
-from MVP2.Analyse_fonctions import *
+from MVP2.analyse_fonctions import *
 import os
 
 

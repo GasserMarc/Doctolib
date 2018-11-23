@@ -1,5 +1,5 @@
 
-from MVP2.Nettoyage_texte import *
+from MVP2.nettoyage_texte import *
 
 def Transformation_fichier(Adresse): #Adresse est le chemin d'accès spécifique à la machine
     try:

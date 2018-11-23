@@ -283,5 +283,3 @@ def run_script_MVP2(adresse):
     MVP2["Duplication_trie"]=coeff_dice(clean,0.3)
 
     return(MVP2)
-
-print(list_functions("EventCandidatA.rb"))

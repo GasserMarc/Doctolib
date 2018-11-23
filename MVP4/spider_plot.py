@@ -5,9 +5,9 @@ from math import pi
 from MVP4.analyse_finale import *
 
 # On définit la DataFrame dans pandas pour associer les valeurs
-df = pd.DataFrame.from_dict(dico_graphe(["../Exemples_codes/EventCandidatA.rb",
-                                         "../Exemples_codes/EventCandidateB.rb",
-                                         "../Exemples_codes/EventCandidateC.rb"]))
+df = pd.DataFrame.from_dict(dico_graphe(["EventCandidatA.rb",
+                                         "EventCandidateB.rb",
+                                         "EventCandidateC.rb"]))
 """
 df=pd.DataFrame({'group': ['A','B','C','D'],
 'var1': [38, 1.5, 30, 4],

@@ -1,11 +1,11 @@
 
 
-def ratio_spaces(code_candidat):
+def ratio_spaces(code_candidat): #indicateur de la densité de texte dans le code
     with open(code_candidat,'r') as code:
         text = code.read()
         N = len(text)
         n = text.count(' ')
-        return (n/N)* 100
+        return (n/N)* 100 #rapport entre le nombre d'espaces et le nombre de caractères total.
 
 def ratio_commentaires(Code_candidat): #calcule le rapport commentaire/texte
     with open (Code_candidat, 'r') as code:
@@ -21,14 +21,14 @@ def ratio_commentaires(Code_candidat): #calcule le rapport commentaire/texte
                 pos = ligne.find('#')
                 l_commentaire = len(ligne[pos:]) - 1 #renvoie la longueur du commentaire en ne comptant pas '#"
                 longueur_commentaires += l_commentaire
-    return (longueur_commentaires/ longueur_code)*100 #renvoie un pourcentage
+    return (longueur_commentaires/ longueur_code)*100
 
 
-print(ratio_commentaires("EventCandidateB.rb"))
+''''print(ratio_commentaires("EventCandidateB.rb"))
 
-'''with open ("EventCandidateB.rb") as code:
+with open ("EventCandidateB.rb") as code:
     texte = code.read()
-    print(len(texte))'''
+    print(len(texte))
 
-'''print(ratio_spaces("EventCandidatA.rb"))
+print(ratio_spaces("EventCandidatA.rb"))
 print(ratio_spaces("EventCandidateB.rb"))'''
