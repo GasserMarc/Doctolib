@@ -38,7 +38,6 @@ def controle_nom_variable (code_candidat):
     for nom_variables in variables:
         if len(nom_variables)<=1: #si les variables ont un nom non explicite, avec une lettre
             nb_variable_mal_nommees+=1
-            #print (nb_variable_mal_nommees)
     return nb_variable_mal_nommees
 
 #print(controle_nom_variable("EventCandidatA.rb"))
@@ -67,12 +66,6 @@ def majuscule_variable(code_candidat):
         code_ascii=ord((variables[i][0]))
         if code_ascii>=65 or code_ascii<=90:
             nb_variable_majuscule+=1
-        code_ascii=ord(variables[i][0])
-        if code_ascii>=65 or code_ascii<=90:
-            nb_variable_majuscule=+1
-            code_ascii=ord((variables[i][0]))
-            if code_ascii>=65 or code_ascii<=90:
-                nb_variable_majuscule=+1
     pourcentage_debut_majuscule= ((nb_variable_majuscule *100)/len(variables))
     return pourcentage_debut_majuscule
 
@@ -124,6 +117,7 @@ def controle_nom_fonction(code_candidat):
             nb_fonctions_mal_nommees+=1
     return nb_fonctions_mal_nommees
 
+
 def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     '''
     Pourcentage de fonctions mal nommées dans le code
@@ -134,6 +128,8 @@ def calcul_pourcentage_fonctions_mal_nommees(code_candidat):
     fonctions=list_functions(code_candidat)
     pourcentage_mal_nommees=((nb_fonctions_mal_nommees*100)/len(fonctions))
     return pourcentage_mal_nommees
+
+
 
 def majuscule_fonction(code_candidat):
     '''
@@ -236,7 +232,6 @@ def coeff_dice(list,precision): #https://fr.wikipedia.org/wiki/Indice_de_Sørens
             result[ligneref][ligneanalysee]=res#Affecte résultat à matrice
             #img[ligneref][ligneanalysee]=[255,255-int(res*255),255-int(res*255)]#Idem
     #plt.imshow(img)
-    #print(Result)
     return(float(total-len(list))/float(len(list)*(len(list)-1)/2))
 
 

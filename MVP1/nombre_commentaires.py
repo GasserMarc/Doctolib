@@ -50,5 +50,3 @@ def compte_lignes_non_code(code_candidat):
                 pass
         return nombre_lignes_non_code
 
-print(compte_lignes_non_code("/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb"))
-
