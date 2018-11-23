@@ -5,19 +5,29 @@ from math import pi
 from MVP4.analyse_finale import *
 
 # On définit la DataFrame dans pandas pour associer les valeurs
-df = pd.DataFrame.from_dict(dico_graphe(["/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidatA.rb",
-                                         "/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateB.rb",
-                                         "/Users/baptiste/PycharmProjects/Doctolib/Exemples_codes/EventCandidateC.rb"]))
- 
+df = pd.DataFrame.from_dict(dico_graphe(["../Exemples_codes/EventCandidatA.rb",
+                                         "../Exemples_codes/EventCandidateB.rb",
+                                         "../Exemples_codes/EventCandidateC.rb"]))
+"""
+df=pd.DataFrame({'group': ['A','B','C','D'],
+'var1': [38, 1.5, 30, 4],
+'var2': [29, 10, 9, 34],
+'var3': [8, 39, 23, 24],
+'var4': [7, 31, 33, 14],
+'var5': [28, 15, 32, 14]
+})
+"""
+
+
 # On définit le nombre de variables
 categories=list(df)[1:]
 N = len(categories)
  
 # On code la cercle extérieur du graphe
-values=df.loc[0].drop('candidat').values.flatten().tolist()
+values=df.loc[0].drop('candidats').values.flatten().tolist()
 values += values[:1]
 values
- 
+
 # on définit l'angle entre les différentes variables
 angles = [n / float(N) * 2 * pi for n in range(N)]
 angles += angles[:1]
@@ -36,19 +46,20 @@ plt.ylim(0,4)
 
 
 # Candidat 1 en bleu
-values=df.loc[0].drop('candidat').values.flatten().tolist()
+values=df.loc[0].drop('candidats').values.flatten().tolist()
 values += values[:1]
 ax.plot(angles, values, linewidth=1, linestyle='solid', label="Candidat A")
 ax.fill(angles, values, 'b', alpha=0.1)
  
 # Candidat 2 en rouge
-values=df.loc[1].drop('candidat').values.flatten().tolist()
+values=df.loc[1].drop('candidats').values.flatten().tolist()
 values += values[:1]
 ax.plot(angles, values, linewidth=1, linestyle='solid', label="Candidat B")
 ax.fill(angles, values, 'r', alpha=0.1)
 
+
 # Candidat 3 en vert
-values=df.loc[2].drop('candidat').values.flatten().tolist()
+values=df.loc[2].drop('candidats').values.flatten().tolist()
 values += values[:1]
 ax.plot(angles, values, linewidth=1, linestyle='solid', label="Candidat C")
 ax.fill(angles, values, 'g', alpha=0.1)
