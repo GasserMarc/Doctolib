@@ -12,7 +12,6 @@ def remove_special(s):
             break
     return s1
 
-#print(remove_special('starts_at_cannot_be_greater_than_ends_at\n'))
 
 
 def list_functions(code_candidat): #renvoie une liste de toutes les fonctions du code du candidat.
@@ -63,7 +62,6 @@ def compte_commentaires(file_name):
             # Les commentaires entre = se terminent uniquement par un =end seul sur une ligne
             if lines[i][0:4] == '=end':
                 nombre_commentaires += 1
-    #print('Il y a ' + str(nombre_commentaires) + ' commentaires dans le code')
     return nombre_commentaires
 
 
@@ -112,7 +110,6 @@ def count_boucles(code_candidat):
         textealire=code.readlines() #on ouvre le code du candidat et on lit toutes les lignes en renvoyant la liste de lignes
         textealire=str(textealire) #on met sous forme d'une string pour faciliter la lecture
         nombredeboucle=textealire.count(".each")#on compte le nombre de boucle avec "count""
-        #print("Le fichier contient" ,nombredeboucle, "boucle(s)")
         return(nombredeboucle)
 
 
@@ -129,7 +126,6 @@ def caractere_ligne (code_candidat):
         for k in range(longueur):
                 if len(liste_ligne[k])>= 79:
                     compteur += 1
-        #print(compteur,"ligne(s), soit ",compteur/longueur * 100,"%")
     return compteur
 
 def pourcentage_toolonglines(code_candidat):
@@ -147,10 +143,8 @@ Cette fonction renvoie le nom des variables utilisées par le candidat
 def listes_de_variables(code_candidat):
     with open (code_candidat, "r" ) as code:
         lecture_code=code.readlines()
-        print (lecture_code)
         variables= []
         for line in lecture_code:
-            print (line)
             words=line.split()
             if len (words)<2:
                 pass #si il y a moins de 2 mots il ne peut pas avoir de variable
@@ -191,7 +185,6 @@ def compte_lignes_non_code(code_candidat):
     nombre_lignes_non_code = 0
     with open(code_candidat,'r') as code:
         lines = code.readlines()
-        print(lines)
         for line in lines:
             if line == '\n':
                 nombre_lignes_non_code += 1
@@ -234,7 +227,6 @@ def run_script_MVP_1(code_candidat):
     resultats['loopCount']=count_boucles(code_candidat)
     resultats['tooLongLines']=caractere_ligne(code_candidat)
     resultats['variableCount']=len(listes_de_variables(code_candidat))
-    print(resultats)
     return resultats
 
 
