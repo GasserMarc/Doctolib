@@ -1,0 +1,28 @@
+Définition des objectifs:
+
+lancer un script qui appelle chaque fonction
+
+On part de l'évaluation d'un code de référence. On détermine ensuite les écarts relatifs à ce code.
+On part sur un score selon chaque critère, pondération de chaque critère par importance puis note global.
+
+I - Architecture : performance
+- nombre de lines de codes : 
+- nombre de boucles imbriquées
+- pourcentage de code dupliqué à l'interieur du code: pourcentage
+- rapport tests / fonctions
+
+II - Lisibilité :
+- nombre de fonctions
+- nommage des variables pertinents et rigoureux
+- nommage des fonctions rigoureux
+- densité des commentaires
+- proportion du code recouvert par des textes
+- nombre de caractères par lignes (nombre de lignes avec plus de tant de caractères)
+- Faire une fonction pour l'esthétique du code : densité espaces / caractères
+
+III - Controle de la Fraude
+- définir un seuil acceptable de copie du code par rapport aux EventsCandidats déjà enregistrés.
+
+
+
+
