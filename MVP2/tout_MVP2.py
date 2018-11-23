@@ -284,4 +284,4 @@ def run_script_MVP2(adresse):
 
     return(MVP2)
 
-print(list_functions("EventCandidatA.rb"))
+
